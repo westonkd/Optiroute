@@ -2,6 +2,8 @@
   <library name="GOPATH &lt;optiroute&gt;">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../googlemaps.github.io" />
       <root url="file://$PROJECT_DIR$/../sitepointgoapp" />
     </CLASSES>
     <JAVADOC />

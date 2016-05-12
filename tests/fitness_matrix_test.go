@@ -36,17 +36,27 @@ func TestFitnessMatrix(t *testing.T) {
 
 		rexburg := geneticTSP.Location{
 			Name: "Rexburg, ID",
-			Id: 0,
+			Id: 1,
 		}
 
 		paris := geneticTSP.Location{
 			Name: "Paris, ID",
-			Id: 0,
+			Id: 2,
 		}
 
+		geneva := geneticTSP.Location{
+			Name: "Geneva, ID",
+			Id: 3,
+		}
 
+		dummy := []geneticTSP.Location{
+			montpelier,
+			rexburg,
+			paris,
+			geneva,
+		}
 
-		matrix.LoadMatrix("AIzaSyDExb4usTvy3QNZSuEo-CvcHtcRAoI2-7U")
+		matrix.LoadGoogleMapsMatrix("AIzaSyDExb4usTvy3QNZSuEo-CvcHtcRAoI2-7U", dummy)
 	})
 }
 

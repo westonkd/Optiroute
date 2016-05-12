@@ -5,6 +5,7 @@ import (
 	"github.com/kr/pretty"
 	"golang.org/x/net/context"
 	"errors"
+	"fmt"
 )
 
 type FitnessMatrix struct {
@@ -13,7 +14,7 @@ type FitnessMatrix struct {
 }
 
 func NewFitnessMatrix(size int) *FitnessMatrix {
-	//Create the new matrix
+	// Create the new matrix
 	fm := FitnessMatrix{}
 
 	// Allocate the top-level slice.
@@ -27,18 +28,31 @@ func NewFitnessMatrix(size int) *FitnessMatrix {
 	return &fm
 }
 
-func (self *FitnessMatrix) generateOrigDest(locations []Location) (Location, Location) {
-	var origins []Location
-	var destinations []Location
+func (self *FitnessMatrix) fillMatrix(locations []Location) ([]string, []string) {
+	var origins []string
+	var destinations []string
 
-	//generate a mapping of all!
+	for i, origin := range locations {
+		for _, destination := range locations[i:] {
+			// if we are not going to the same location
+			if (origin.Id != destination.Id) {
+				fmt.Println(origin.Name + " -> " + destination.Name)
+			}
+		}
+
+		fmt.Println("======")
+	}
+	// generate a mapping of all!
 
 	return  origins, destinations
 }
 
-func (self *FitnessMatrix) LoadMatrix(apiKey string, locations []Location) error {
+// LoadGoogleMapMatrix takes an API key and alist of locations. It loads the locations
+// into the matrix (indexed by location id) and sets the value of the distance from a
+// location to each other location
+func (self *FitnessMatrix) LoadGoogleMapsMatrix(apiKey string, locations []Location) error {
 
-	origins, destinations := self.generateOrigDest(locations)
+	origins, destinations := self.fillMatrix(locations)
 
 	c, err := maps.NewClient(maps.WithAPIKey(apiKey))
 	if err != nil {
