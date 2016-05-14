@@ -57,4 +57,53 @@ func TestChromosome(t *testing.T) {
 		So(val.Name, ShouldEqual, "one")
 		So(val2.Name, ShouldEqual, "zero")
 	})
+
+	Convey("Chromosome should have a non-default constructor\n", t, func(){
+		loc := geneticTSP.Location{
+			Long: 12.0,
+			Lat: 23.0,
+		}
+
+		loc2 := geneticTSP.Location{
+			Long: 23.0,
+			Lat: 45.0,
+		}
+
+		locations := []geneticTSP.Location{
+			loc,
+			loc2,
+		}
+
+		matrix := geneticTSP.NewFitnessMatrix()
+		matrix.LoadPointMatrix(locations)
+
+		chromo := geneticTSP.NewChromosome(locations, matrix)
+
+		So(len(chromo.Locations), ShouldEqual, len(locations))
+	})
+
+	Convey("Chromosome should calculate its fitness using its distance matrix", t, func(){
+		loc := geneticTSP.Location{
+			Long: 12.0,
+			Lat: 23.0,
+			Id: 0,
+		}
+
+		loc2 := geneticTSP.Location{
+			Long: 23.0,
+			Lat: 45.0,
+			Id: 1,
+		}
+
+		locations := []geneticTSP.Location{
+			loc,
+			loc2,
+		}
+
+		matrix := geneticTSP.NewFitnessMatrix()
+		matrix.LoadPointMatrix(locations)
+
+		chromo := geneticTSP.NewChromosome(locations, matrix)
+		So(chromo.Fitness(), ShouldEqual, 48)
+	})
 }
