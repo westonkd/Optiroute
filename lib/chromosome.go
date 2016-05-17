@@ -76,16 +76,21 @@ func (self *Chromosome) Length() (location int) {
 	return
 }
 
+// Fitness returns the fitness of the chromosome (1 / distance)
+func (self *Chromosome) Fitness() (fitness float32) {
+	fitness = 1.0 / float32(self.Distance())
+	return
+}
 
-// Fitness returns the fitness of the chromosome
-func (self *Chromosome) Fitness() (fitness int) {
-	fitness = 0
+// Distance returns the distance of the chromosome
+func (self *Chromosome) Distance() (distance int) {
+	distance = 0
 
 	for i, location := range self.Locations {
 		if i + 1 < self.Length() {
-			fitness += self.Matrix.DistanceMap[strconv.Itoa(location.Id) + strconv.Itoa(self.Locations[i + 1].Id)]
+			distance += self.Matrix.DistanceMap[strconv.Itoa(location.Id) + strconv.Itoa(self.Locations[i + 1].Id)]
 		} else {
-			fitness += self.Matrix.DistanceMap[strconv.Itoa(location.Id) + strconv.Itoa(self.Locations[0].Id)]
+			distance += self.Matrix.DistanceMap[strconv.Itoa(location.Id) + strconv.Itoa(self.Locations[0].Id)]
 		}
 	}
 

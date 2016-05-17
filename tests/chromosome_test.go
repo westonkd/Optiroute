@@ -104,6 +104,7 @@ func TestChromosome(t *testing.T) {
 		matrix.LoadPointMatrix(locations)
 
 		chromo := geneticTSP.NewChromosome(locations, matrix)
-		So(chromo.Fitness(), ShouldEqual, 48)
+		So(chromo.Distance(), ShouldEqual, 48)
+		So(chromo.Fitness(), ShouldEqual, 1.0 / 48.0)
 	})
 }

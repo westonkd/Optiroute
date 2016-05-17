@@ -28,6 +28,14 @@ func NewFitnessMatrix() *FitnessMatrix {
 	return &fm
 }
 
+// GetDistance returns the distance between two locations by looking
+// them up in the distance map.
+func (self *FitnessMatrix) GetDistance(locOne, locTwo Location) int {
+	return self.DistanceMap[strconv.Itoa(locOne.Id) + strconv.Itoa(locTwo.Id)]
+}
+
+// LoadPointMatrix loads a set of locations that use Lat and Long values into the
+// Distance map
 func (self *FitnessMatrix) LoadPointMatrix(locations []Location) error {
 	for _, rVal := range locations {
 		for _, cVal := range locations {
