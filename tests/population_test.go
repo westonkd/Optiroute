@@ -50,7 +50,13 @@ func getPopulation() geneticTSP.Population {
 
 	locations[0].Long = 23.0
 
-	chromoTwo := geneticTSP.NewChromosome(locations, matrix)
+	b := make([]geneticTSP.Location, len(locations))
+	copy(b, locations)
+
+	chromoTwo := geneticTSP.NewChromosome(b, matrix)
+
+	chromo.Id = 0
+	chromoTwo.Id = 1
 
 	chromosomes := []geneticTSP.Chromosome {
 		*chromo,
@@ -108,12 +114,15 @@ func TestPopulation(t *testing.T) {
 	})
 
 	Convey("Population should have the ablility to mutate", t, func(){
-		//popOne := getPopulation()
+		popOne := getPopulation()
 		popTwo := getPopulation()
 
 		//Always mutate
 		popTwo.MutThreshold = 2
 		popTwo.Mutate()
+
+		pretty.Println(popOne, "\n==========================")
+		pretty.Println(popTwo)
 	})
 }
 

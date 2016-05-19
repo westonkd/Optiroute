@@ -4,7 +4,6 @@ import (
 	"time"
 	"math/rand"
 	"errors"
-	"github.com/kr/pretty"
 )
 
 // Represents a population of Chromosomes (tours)
@@ -74,21 +73,28 @@ func (self *Population) TournamentSelect(tournamentSize int) *Chromosome {
 }
 
 // Mutate iterates over all chromosomes and performs a random swap of locations
-// if a randomly chosen number is bellow the mutation threshold level.
+// if a randomly chosen number is bellow the mutation threshold level. Note the
+// possibility of choosing the two swap values as the same number. This is less
+// noticeable for larger chromosomes.
 func (self *Population) Mutate() {
 	// Seed the random number generator
 	rand.Seed(time.Now().Unix())
 
 	// Loop through each chromosome
-	for _, val := range self.Chromosomes {
+	for i := range self.Chromosomes {
 		// Generate a random number between 0 and 1
 		mutVal := rand.Float32()
 
 		// Mutate if the random number is bellow threshold
 		if mutVal < self.MutThreshold {
-			val.RandSwap()
+			self.Chromosomes[i].RandSwap()
 		}
 	}
 
+}
+
+//TODO Implement the crossover algorithm next
+func (self *Population) Crossover(parentOne, parentTwo *Chromosome) *Chromosome{
+	return &Chromosome{}
 }
 

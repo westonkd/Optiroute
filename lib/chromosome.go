@@ -7,12 +7,14 @@ import (
 	"strconv"
 	"math/rand"
 	"time"
+	"github.com/kr/pretty"
 )
 
 // Chromosome represents a set of genes (locations).
 type Chromosome struct {
 	Locations []Location
 	Matrix *FitnessMatrix
+	Id int
 }
 
 // NewChromosome is the constructor for Chromosome
@@ -59,6 +61,7 @@ func (self *Chromosome) Remove(i int) error {
 // Swap swaps element first and element second. If either first
 // or second is out of bounds, an error is returned.
 func (self *Chromosome) Swap(first, second int) error {
+	pretty.Println("swapping ", first, " and ", second)
 	if first < len(self.Locations) && second < len(self.Locations) {
 		//To a simple swap
 		temp := self.Locations[first]
