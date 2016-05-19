@@ -9,6 +9,7 @@ import (
 
 	"github.com/astaxie/beego"
 	. "github.com/smartystreets/goconvey/convey"
+	"github.com/kr/pretty"
 )
 
 func init() {
@@ -30,9 +31,16 @@ func getPopulation() geneticTSP.Population {
 		Id: 1,
 	}
 
+	loc3 := geneticTSP.Location{
+		Long: 455.0,
+		Lat: 45,
+		Id: 2,
+	}
+
 	locations := []geneticTSP.Location{
 		loc,
 		loc2,
+		loc3,
 	}
 
 	matrix := geneticTSP.NewFitnessMatrix()
@@ -74,6 +82,38 @@ func TestPopulation(t *testing.T) {
 		}
 
 		So(pop.GetFittest().Fitness(), ShouldEqual, fitest.Fitness())
+	})
+
+	Convey("Population should allow chromosomes to be added to it and retreived", t, func(){
+		pop := getPopulation()
+
+		initialCount := pop.Size()
+
+		pop.Add(&pop.Chromosomes[0])
+
+		So(pop.Size(), ShouldEqual, initialCount + 1)
+
+		// get a chromosome
+		chromo, error := pop.Get(0)
+
+		So(error, ShouldBeNil)
+		So(chromo.Fitness(), ShouldEqual, pop.Chromosomes[0].Fitness())
+	})
+
+	Convey("Population should perform a tournament selection",t, func() {
+		pop := getPopulation()
+
+		chromo := pop.TournamentSelect(2)
+		pretty.Print(chromo)
+	})
+
+	Convey("Population should have the ablility to mutate", t, func(){
+		//popOne := getPopulation()
+		popTwo := getPopulation()
+
+		//Always mutate
+		popTwo.MutThreshold = 2
+		popTwo.Mutate()
 	})
 }
 

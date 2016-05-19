@@ -5,6 +5,8 @@ package geneticTSP
 import (
 	"errors"
 	"strconv"
+	"math/rand"
+	"time"
 )
 
 // Chromosome represents a set of genes (locations).
@@ -80,6 +82,15 @@ func (self *Chromosome) Length() (location int) {
 func (self *Chromosome) Fitness() (fitness float32) {
 	fitness = 1.0 / float32(self.Distance())
 	return
+}
+
+// RandSwap randomly swaps two locations in the chromosome
+func (self *Chromosome) RandSwap() {
+	// Seed the rand num generator
+	rand.Seed(time.Now().Unix())
+
+	// Do the swap
+	self.Swap(rand.Intn(self.Length() - 1), rand.Intn(self.Length() - 1))
 }
 
 // Distance returns the distance of the chromosome
