@@ -1,10 +1,10 @@
 package main
 
 import (
-	_ "optiroute/routers"
 	"github.com/astaxie/beego"
-	"strconv"
+	_ "optiroute/routers"
 	"os"
+	"strconv"
 )
 
 func main() {
@@ -15,4 +15,3 @@ func main() {
 
 	beego.Run()
 }
-

@@ -1,40 +1,42 @@
 package test
 
 import (
-	"testing"
-	"runtime"
-	"path/filepath"
 	"optiroute/lib"
 	_ "optiroute/routers"
+	"path/filepath"
+	"runtime"
+	"testing"
 
 	"github.com/astaxie/beego"
-	. "github.com/smartystreets/goconvey/convey"
 	"github.com/kr/pretty"
+	. "github.com/smartystreets/goconvey/convey"
+	"math/rand"
+	"time"
 )
 
 func init() {
 	_, file, _, _ := runtime.Caller(1)
-	apppath, _ := filepath.Abs(filepath.Dir(filepath.Join(file, ".." + string(filepath.Separator))))
+	apppath, _ := filepath.Abs(filepath.Dir(filepath.Join(file, ".."+string(filepath.Separator))))
 	beego.TestBeegoInit(apppath)
 }
 
 func getPopulation() geneticTSP.Population {
 	loc := geneticTSP.Location{
 		Long: 12.0,
-		Lat: 23.0,
-		Id: 0,
+		Lat:  23.0,
+		Id:   0,
 	}
 
 	loc2 := geneticTSP.Location{
 		Long: 23.0,
-		Lat: 45.0,
-		Id: 1,
+		Lat:  45.0,
+		Id:   1,
 	}
 
 	loc3 := geneticTSP.Location{
 		Long: 455.0,
-		Lat: 45,
-		Id: 2,
+		Lat:  45,
+		Id:   2,
 	}
 
 	locations := []geneticTSP.Location{
@@ -58,7 +60,7 @@ func getPopulation() geneticTSP.Population {
 	chromo.Id = 0
 	chromoTwo.Id = 1
 
-	chromosomes := []geneticTSP.Chromosome {
+	chromosomes := []geneticTSP.Chromosome{
 		*chromo,
 		*chromoTwo,
 	}
@@ -70,12 +72,12 @@ func getPopulation() geneticTSP.Population {
 }
 
 func TestPopulation(t *testing.T) {
-	Convey("Population should have an associated length", t, func(){
+	Convey("Population should have an associated length", t, func() {
 		pop := getPopulation()
 		So(pop.Size(), ShouldEqual, 2)
 	})
 
-	Convey("Population should find its fittest chromosome", t, func(){
+	Convey("Population should find its fittest chromosome", t, func() {
 		pop := getPopulation()
 
 		chromoOne := pop.Chromosomes[0]
@@ -90,14 +92,14 @@ func TestPopulation(t *testing.T) {
 		So(pop.GetFittest().Fitness(), ShouldEqual, fitest.Fitness())
 	})
 
-	Convey("Population should allow chromosomes to be added to it and retreived", t, func(){
+	Convey("Population should allow chromosomes to be added to it and retreived", t, func() {
 		pop := getPopulation()
 
 		initialCount := pop.Size()
 
 		pop.Add(&pop.Chromosomes[0])
 
-		So(pop.Size(), ShouldEqual, initialCount + 1)
+		So(pop.Size(), ShouldEqual, initialCount+1)
 
 		// get a chromosome
 		chromo, error := pop.Get(0)
@@ -106,14 +108,14 @@ func TestPopulation(t *testing.T) {
 		So(chromo.Fitness(), ShouldEqual, pop.Chromosomes[0].Fitness())
 	})
 
-	Convey("Population should perform a tournament selection",t, func() {
+	Convey("Population should perform a tournament selection", t, func() {
 		pop := getPopulation()
 
 		chromo := pop.TournamentSelect(2)
 		pretty.Print(chromo)
 	})
 
-	Convey("Population should have the ablility to mutate", t, func(){
+	Convey("Population should have the ablility to mutate", t, func() {
 		popOne := getPopulation()
 		popTwo := getPopulation()
 
@@ -124,7 +126,104 @@ func TestPopulation(t *testing.T) {
 		pretty.Println(popOne, "\n==========================")
 		pretty.Println(popTwo)
 	})
+
+	Convey("Crossover should produce the expected child chromosome using the SCX method", t, func() {
+		rand.Seed(time.Now().Unix())
+
+		loc1 := geneticTSP.Location{
+			Id:   1,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc2 := geneticTSP.Location{
+			Id:   2,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc3 := geneticTSP.Location{
+			Id:   3,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc4 := geneticTSP.Location{
+			Id:   4,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc5 := geneticTSP.Location{
+			Id:   5,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc6 := geneticTSP.Location{
+			Id:   6,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc7 := geneticTSP.Location{
+			Id:   7,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		locations := []geneticTSP.Location{
+			loc1,
+			loc2,
+			loc3,
+			loc4,
+			loc5,
+			loc6,
+			loc7,
+		}
+
+		distanceMatrix := geneticTSP.NewFitnessMatrix()
+		loadError := distanceMatrix.LoadPointMatrix(locations)
+
+		chromo1 := geneticTSP.Chromosome{
+			Locations: []geneticTSP.Location{
+				loc1,
+				loc5,
+				loc7,
+				loc3,
+				loc6,
+				loc4,
+				loc2,
+			},
+			Matrix: distanceMatrix,
+		}
+
+		chromo2 := geneticTSP.Chromosome{
+			Locations: []geneticTSP.Location{
+				loc1,
+				loc6,
+				loc2,
+				loc4,
+				loc3,
+				loc5,
+				loc7,
+			},
+			Matrix: distanceMatrix,
+		}
+
+		pop := geneticTSP.Population{
+			Chromosomes: []geneticTSP.Chromosome{
+				chromo1,
+				chromo2,
+			},
+		}
+
+		res, err := pop.Crossover(&chromo1, &chromo2)
+
+		pretty.Println("\n======\n", res)
+		pretty.Println("\n==dist results==\n", chromo1.Distance(), ", ", chromo2.Distance(), ", ", res.Distance())
+
+		So(loadError, ShouldBeNil)
+		So(err, ShouldBeNil)
+	})
 }
-
-
-

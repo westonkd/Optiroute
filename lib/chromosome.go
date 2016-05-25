@@ -4,38 +4,37 @@ package geneticTSP
 
 import (
 	"errors"
-	"strconv"
 	"math/rand"
-	"time"
+	"strconv"
+	"fmt"
 	"github.com/kr/pretty"
 )
 
 // Chromosome represents a set of genes (locations).
 type Chromosome struct {
 	Locations []Location
-	Matrix *FitnessMatrix
-	Id int
+	Matrix    *FitnessMatrix
+	Id        int
 }
 
 // NewChromosome is the constructor for Chromosome
 func NewChromosome(locations []Location, matrix *FitnessMatrix) *Chromosome {
 	c := Chromosome{
 		Locations: locations,
-		Matrix: matrix,
+		Matrix:    matrix,
 	}
 
 	return &c
 }
 
-
 // Get retrieves element i from the chromosome. Returns an error
 // if i is out of bounds.
-func (self *Chromosome) Get(i int) (Location, error)  {
+func (self *Chromosome) Get(i int) (Location, error) {
 	if i < len(self.Locations) {
 		return self.Locations[i], nil
 	}
 
-	return Location{0,0,"error",0}, errors.New("Index out of boounds")
+	return Location{0, 0, "error", 0}, errors.New("Index out of boounds")
 }
 
 // Add adds n locations to the chromosome.
@@ -52,7 +51,7 @@ func (self *Chromosome) Remove(i int) error {
 	//if the index is in bounds
 	if i < len(self.Locations) {
 		//remove the specified element
-		self.Locations = append(self.Locations[:i], self.Locations[i + 1:]...)
+		self.Locations = append(self.Locations[:i], self.Locations[i+1:]...)
 		return nil
 	}
 	return errors.New("Index ouf of bounds.")
@@ -61,13 +60,17 @@ func (self *Chromosome) Remove(i int) error {
 // Swap swaps element first and element second. If either first
 // or second is out of bounds, an error is returned.
 func (self *Chromosome) Swap(first, second int) error {
-	pretty.Println("swapping ", first, " and ", second)
 	if first < len(self.Locations) && second < len(self.Locations) {
-		//To a simple swap
-		temp := self.Locations[first]
-		self.Locations[first] = self.Locations[second]
-		self.Locations[second] = temp
+		// Make a copy of the locations array
+		b := make([]Location, len(self.Locations))
+		copy(b, self.Locations)
 
+		// Do a simple swap
+		temp := b[first]
+		b[first] = b[second]
+		b[second] = temp
+
+		self.Locations = b
 		return nil
 	}
 
@@ -89,11 +92,23 @@ func (self *Chromosome) Fitness() (fitness float32) {
 
 // RandSwap randomly swaps two locations in the chromosome
 func (self *Chromosome) RandSwap() {
-	// Seed the rand num generator
-	rand.Seed(time.Now().Unix())
 
 	// Do the swap
-	self.Swap(rand.Intn(self.Length() - 1), rand.Intn(self.Length() - 1))
+	self.Swap(rand.Intn(self.Length()-1), rand.Intn(self.Length()-1))
+}
+
+// Returns the index of the location with the specified ID
+func (self *Chromosome) IndexOf(id int) int {
+	for i, val := range self.Locations {
+		if val.Id == id {
+			return i
+		}
+
+	}
+
+	fmt.Println("Could not find ", id, "in ")
+	pretty.Println(self.Locations)
+	return -1
 }
 
 // Distance returns the distance of the chromosome
@@ -101,10 +116,10 @@ func (self *Chromosome) Distance() (distance int) {
 	distance = 0
 
 	for i, location := range self.Locations {
-		if i + 1 < self.Length() {
-			distance += self.Matrix.DistanceMap[strconv.Itoa(location.Id) + strconv.Itoa(self.Locations[i + 1].Id)]
+		if i+1 < self.Length() {
+			distance += self.Matrix.DistanceMap[strconv.Itoa(location.Id)+strconv.Itoa(self.Locations[i+1].Id)]
 		} else {
-			distance += self.Matrix.DistanceMap[strconv.Itoa(location.Id) + strconv.Itoa(self.Locations[0].Id)]
+			distance += self.Matrix.DistanceMap[strconv.Itoa(location.Id)+strconv.Itoa(self.Locations[0].Id)]
 		}
 	}
 

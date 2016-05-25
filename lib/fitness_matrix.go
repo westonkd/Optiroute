@@ -1,19 +1,19 @@
 package geneticTSP
 
 import (
-	"googlemaps.github.io/maps"
+	"errors"
 	"github.com/kr/pretty"
 	"golang.org/x/net/context"
-	"errors"
-	"strconv"
+	"googlemaps.github.io/maps"
 	"math"
+	"strconv"
 )
 
 // FitnessMatrix represents a distance matrix from
 // a single destination to every other destination.
 type FitnessMatrix struct {
 	distanceJson map[string]interface{}
-	DistanceMap map[string]int
+	DistanceMap  map[string]int
 }
 
 // NewFintessMatrix is the constructor for
@@ -31,7 +31,7 @@ func NewFitnessMatrix() *FitnessMatrix {
 // GetDistance returns the distance between two locations by looking
 // them up in the distance map.
 func (self *FitnessMatrix) GetDistance(locOne, locTwo Location) int {
-	return self.DistanceMap[strconv.Itoa(locOne.Id) + strconv.Itoa(locTwo.Id)]
+	return self.DistanceMap[strconv.Itoa(locOne.Id)+strconv.Itoa(locTwo.Id)]
 }
 
 // LoadPointMatrix loads a set of locations that use Lat and Long values into the
@@ -43,7 +43,7 @@ func (self *FitnessMatrix) LoadPointMatrix(locations []Location) error {
 			key := strconv.Itoa(rVal.Id) + strconv.Itoa(cVal.Id)
 			keyTwo := strconv.Itoa(cVal.Id) + strconv.Itoa(rVal.Id)
 
-			value := math.Sqrt(math.Pow(float64(rVal.Long - cVal.Long), 2.0) + math.Pow(float64(rVal.Lat - cVal.Lat), 2.0))
+			value := math.Sqrt(math.Pow(float64(rVal.Long-cVal.Long), 2.0) + math.Pow(float64(rVal.Lat-cVal.Lat), 2.0))
 
 			// Add to the map
 			self.DistanceMap[key] = int(math.Abs(value))
@@ -65,7 +65,7 @@ func (self *FitnessMatrix) getMapping(locations []Location) ([]string, []string)
 		destinations = append(destinations, val.Name)
 	}
 
-	return  origins, destinations
+	return origins, destinations
 }
 
 // LoadGoogleMapMatrix takes an API key and a list of locations. It loads the locations
@@ -85,7 +85,7 @@ func (self *FitnessMatrix) LoadGoogleMapsMatrix(apiKey string, locations []Locat
 	}
 
 	r := &maps.DistanceMatrixRequest{
-		Origins: origins,
+		Origins:      origins,
 		Destinations: destinations,
 	}
 
@@ -94,13 +94,12 @@ func (self *FitnessMatrix) LoadGoogleMapsMatrix(apiKey string, locations []Locat
 		return errors.New("Error making request.")
 	}
 
-
 	// Get the distances from the response
 	distances := resp.Rows
 
 	// Set up the distance matrix
 	for origin, valO := range distances {
-		for dest, valD  := range valO.Elements {
+		for dest, valD := range valO.Elements {
 			key := strconv.Itoa(locations[origin].Id) + strconv.Itoa(locations[dest].Id)
 			keyTwo := strconv.Itoa(locations[dest].Id) + strconv.Itoa(locations[origin].Id)
 			value := valD.Distance.Meters

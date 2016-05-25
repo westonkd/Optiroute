@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe3d9301-4db1-430a-a0d0-427302229927" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/westonkd.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/tsp_algorithm.go" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/tsp_algorithm_test.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/chromosome.go" afterPath="$PROJECT_DIR$/lib/chromosome.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fitness_matrix.go" afterPath="$PROJECT_DIR$/lib/fitness_matrix.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/location.go" afterPath="$PROJECT_DIR$/lib/location.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/population.go" afterPath="$PROJECT_DIR$/lib/population.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/chromosome_test.go" afterPath="$PROJECT_DIR$/tests/chromosome_test.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/default_test.go" afterPath="$PROJECT_DIR$/tests/default_test.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/fitness_matrix_test.go" afterPath="$PROJECT_DIR$/tests/fitness_matrix_test.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/population_test.go" afterPath="$PROJECT_DIR$/tests/population_test.go" />
     </list>
     <ignored path="optiroute.iws" />
@@ -29,10 +38,10 @@
       <file leaf-file-name="population.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/population.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7457627">
-              <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.73898304">
+              <caret line="214" column="29" selection-start-line="214" selection-start-column="29" selection-end-line="214" selection-end-column="29" />
               <folding>
-                <element signature="e#20#61#0" expanded="true" />
+                <element signature="e#20#92#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,22 +51,42 @@
         <entry file="file://$PROJECT_DIR$/lib/chromosome.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="24" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+              <caret line="109" column="37" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tsp_algorithm_test.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/tsp_algorithm_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="77" column="49" selection-start-line="77" selection-start-column="49" selection-end-line="77" selection-end-column="49" />
               <folding>
-                <element signature="e#151#227#0" expanded="true" />
+                <element signature="e#14#199#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="population_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/population_test.go">
+      <file leaf-file-name="tsp_algorithm.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/tsp_algorithm.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.259259">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding>
+                <element signature="e#20#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="location.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/location.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding>
-                <element signature="e#14#202#0" expanded="true" />
-              </folding>
+              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,8 +126,10 @@
         <option value="$PROJECT_DIR$/tests/fitness_matrix_test.go" />
         <option value="$PROJECT_DIR$/lib/fitness_matrix.go" />
         <option value="$PROJECT_DIR$/tests/chromosome_test.go" />
-        <option value="$PROJECT_DIR$/lib/chromosome.go" />
         <option value="$PROJECT_DIR$/tests/population_test.go" />
+        <option value="$PROJECT_DIR$/tests/tsp_algorithm_test.go" />
+        <option value="$PROJECT_DIR$/lib/chromosome.go" />
+        <option value="$PROJECT_DIR$/lib/tsp_algorithm.go" />
         <option value="$PROJECT_DIR$/lib/population.go" />
       </list>
     </option>
@@ -143,8 +174,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -193,6 +222,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -203,6 +234,8 @@
     <property name="configurable.Project.libraries.is.expanded" value="true" />
     <property name="configurable.Module.libraries.is.expanded" value="false" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -495,12 +528,21 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="737" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -508,6 +550,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17447495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -518,7 +561,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -555,7 +597,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#20#61#0" expanded="true" />
+            <element signature="e#20#92#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -565,7 +607,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="76" column="10" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
           <folding>
-            <element signature="e#14#202#0" expanded="true" />
+            <element signature="e#14#223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -574,9 +616,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#151#227#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -584,9 +624,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="e#14#92#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -594,9 +632,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding>
-            <element signature="e#151#227#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -604,9 +640,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="e#14#92#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -642,9 +676,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
-          <folding>
-            <element signature="e#151#227#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -837,13 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/location.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12155592">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/astaxie/beego/config.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -855,9 +880,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24311183">
           <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="e#14#92#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -877,52 +900,82 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/chromosome_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38573745">
-          <caret line="85" column="16" selection-start-line="85" selection-start-column="16" selection-end-line="105" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.1458671">
+          <caret line="15" column="97" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="97" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fitness_matrix.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14814815">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.33225283">
+          <caret line="73" column="27" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
+          <folding>
+            <element signature="e#20#140#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/fitness_matrix_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8752026">
-          <caret line="47" column="50" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/population_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3322034">
+          <caret line="121" column="31" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="31" />
+          <folding>
+            <element signature="e#14#223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/location.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tsp_algorithm.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.259259">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#20#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/tsp_algorithm_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="49" selection-start-line="77" selection-start-column="49" selection-end-line="77" selection-end-column="49" />
+          <folding>
+            <element signature="e#14#199#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/chromosome.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="24" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
-          <folding>
-            <element signature="e#151#227#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/population_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#202#0" expanded="true" />
-          </folding>
+          <caret line="109" column="37" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/population.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7457627">
-          <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.73898304">
+          <caret line="214" column="29" selection-start-line="214" selection-start-column="29" selection-end-line="214" selection-end-column="29" />
           <folding>
-            <element signature="e#20#61#0" expanded="true" />
+            <element signature="e#20#92#0" expanded="true" />
           </folding>
         </state>
       </provider>
