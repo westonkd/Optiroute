@@ -9,6 +9,7 @@ import (
 
 	"github.com/astaxie/beego"
 	. "github.com/smartystreets/goconvey/convey"
+	"math/rand"
 )
 
 func init() {
@@ -109,28 +110,78 @@ func TestChromosome(t *testing.T) {
 	})
 
 	Convey("Should return the index of a location by ID", t, func() {
-		loc := geneticTSP.Location{
-			Long: 12.0,
-			Lat:  23.0,
-			Id:   0,
+		loc1 := geneticTSP.Location{
+			Id:   1,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
 		}
 
 		loc2 := geneticTSP.Location{
-			Long: 23.0,
-			Lat:  45.0,
-			Id:   1,
+			Id:   2,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc3 := geneticTSP.Location{
+			Id:   3,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc4 := geneticTSP.Location{
+			Id:   4,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc5 := geneticTSP.Location{
+			Id:   5,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc6 := geneticTSP.Location{
+			Id:   6,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
+		}
+
+		loc7 := geneticTSP.Location{
+			Id:   7,
+			Lat:  float32(rand.Intn(400)),
+			Long: float32(rand.Intn(400)),
 		}
 
 		locations := []geneticTSP.Location{
-			loc,
+			loc1,
 			loc2,
+			loc3,
+			loc4,
+			loc5,
+			loc6,
+			loc7,
 		}
 
-		matrix := geneticTSP.NewFitnessMatrix()
-		matrix.LoadPointMatrix(locations)
+		distanceMatrix := geneticTSP.NewFitnessMatrix()
+		distanceMatrix.LoadPointMatrix(locations)
 
-		chromo := geneticTSP.NewChromosome(locations, matrix)
+		chromo1 := geneticTSP.Chromosome{
+			Locations: []geneticTSP.Location{
+				loc1,
+				loc5,
+				loc7,
+				loc3,
+				loc6,
+				loc4,
+				loc2,
+			},
+			Matrix: distanceMatrix,
+		}
 
-		So(chromo.IndexOf(1), ShouldEqual, 1)
+		So(chromo1.IndexOf(1), ShouldEqual,0)
+		So(chromo1.IndexOf(5), ShouldEqual,1)
+		So(chromo1.IndexOf(2), ShouldEqual,6)
+		So(chromo1.IndexOf(3), ShouldEqual,3)
+		So(chromo1.IndexOf(9), ShouldEqual,-1)
 	})
 }

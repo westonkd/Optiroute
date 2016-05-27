@@ -6,8 +6,6 @@ import (
 	"errors"
 	"math/rand"
 	"strconv"
-	"fmt"
-	"github.com/kr/pretty"
 )
 
 // Chromosome represents a set of genes (locations).
@@ -92,9 +90,21 @@ func (self *Chromosome) Fitness() (fitness float32) {
 
 // RandSwap randomly swaps two locations in the chromosome
 func (self *Chromosome) RandSwap() {
+	// Pick random ints in range
+	randOne := rand.Intn(self.Length()-1)
+	randTwo := rand.Intn(self.Length()-1)
+
+	// If either are zero, add one (don't swap first loc)
+	if randOne == 0 {
+		randOne++
+	}
+
+	if randTwo == 0 {
+		randTwo++
+	}
 
 	// Do the swap
-	self.Swap(rand.Intn(self.Length()-1), rand.Intn(self.Length()-1))
+	self.Swap(randOne, randTwo)
 }
 
 // Returns the index of the location with the specified ID
@@ -106,8 +116,6 @@ func (self *Chromosome) IndexOf(id int) int {
 
 	}
 
-	fmt.Println("Could not find ", id, "in ")
-	pretty.Println(self.Locations)
 	return -1
 }
 

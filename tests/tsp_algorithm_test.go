@@ -75,7 +75,7 @@ func TestTSA(t *testing.T) {
 			loc7,
 		}
 
-		ga, err := geneticTSP.NewTSPAlgorithm(locations,false,true, 100)
+		ga, err := geneticTSP.NewTSPAlgorithm(locations,false,true, 50)
 
 		for i := 0; i < 5; i++ {
 			ga.Evolve()

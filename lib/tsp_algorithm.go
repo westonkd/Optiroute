@@ -5,6 +5,7 @@ import (
 import (
 	"math/rand"
 	"fmt"
+	"github.com/kr/pretty"
 )
 
 type TSPAlgorithm struct {
@@ -60,6 +61,8 @@ func (self *TSPAlgorithm) Evolve() {
 		offset++
 	}
 
+
+
 	// Crossover
 	for i := offset; i < self.PopSize; i++ {
 		// Select parent chromosomes
@@ -67,9 +70,16 @@ func (self *TSPAlgorithm) Evolve() {
 		parent2 := self.Pop.TournamentSelect(5)
 
 		// Do the crossover and add to the new generation
-		child, _ := self.Pop.Crossover(parent1, parent2)
+		child, error := self.Pop.Crossover(parent1, parent2)
+
+		if error != nil {
+			pretty.Println("PANICCCC!")
+			pretty.Println(error)
+		}
+
 		newChromosomes = append(newChromosomes, *child)
 	}
+
 
 	// Initialize a new population
 	nextGen := &Population{
@@ -82,6 +92,7 @@ func (self *TSPAlgorithm) Evolve() {
 	// Assign the next population
 	self.Pop.Chromosomes = make([]Chromosome, len(nextGen.Chromosomes))
 	copy(self.Pop.Chromosomes, nextGen.Chromosomes)
+
 
 	fmt.Println("Distance: ", self.Pop.GetFittest().Distance())
 }
@@ -111,6 +122,7 @@ func (self *TSPAlgorithm) RandomPop() *Population {
 			p.Chromosomes[i].RandSwap()
 		}
 	}
+
 
 	return &p
 }

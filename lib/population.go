@@ -4,7 +4,6 @@ import (
 	"errors"
 	"math/rand"
 	"time"
-	"fmt"
 	"github.com/kr/pretty"
 )
 
@@ -65,7 +64,8 @@ func (self *Population) TournamentSelect(tournamentSize int) *Chromosome {
 
 	// Randomly add chromosomes to the new population
 	for i := 0; i < tournamentSize; i++ {
-		randomChromo, error := self.Get(rand.Intn(self.Size()))
+		randInt := rand.Intn(self.Size())
+		randomChromo, error := self.Get(randInt)
 
 		// If there was an error just try again later
 		if error != nil {
@@ -73,7 +73,13 @@ func (self *Population) TournamentSelect(tournamentSize int) *Chromosome {
 			continue
 		}
 
+		if len(randomChromo.Locations) == 0 {
+			pretty.Println("Adding empty chromo to the list!")
+			//pretty.Println("Chose ", randInt, "From ", self.Chromosomes)
+		}
+
 		tournamentPop.Add(randomChromo)
+
 	}
 
 	// Select the best chromosome
@@ -103,122 +109,116 @@ func (self *Population) Mutate() {
 
 // Crossover
 func (self *Population) Crossover(parentOne, parentTwo *Chromosome) (*Chromosome, error) {
-	// Child locations
-	initLocation, error := parentOne.Get(0)
+	// Locations for the child
+	childLocations := make([]Location, 0)
 
-	// If there was an error retrieving the first entry
-	if error != nil {
-		return nil, error
-	}
+	// Add the starting location
+	childLocations = append(childLocations, parentOne.Locations[0])
 
-	childLocations := []Location{
-		initLocation,
-	}
+	// While the child is not long enough
+	for len(childLocations) < parentOne.Length() {
+		canOne, canTwo := Location{}, Location{}
 
-	 count := 0
-
-	// While the child is not yet complete
-	for (len(childLocations) < parentOne.Length()) {
-		count++
-
-		// Length of child
-		childLen := len(childLocations)
-
-		// Get the next valid location from each parent
-		firstVal := parentOne.IndexOf(childLocations[childLen - 1].Id)
-		secondVal := parentTwo.IndexOf(childLocations[childLen - 1].Id)
-
-		if firstVal < 0 || secondVal < 0 {
-			fmt.Println("+++++++++BANANA+++++++++++ ", childLen)
-			pretty.Println(childLocations[childLen - 1]) // this is always empty so on the 5th iter there is an issue
-
-			break
-		}
-
-		optionOne, eP1 := parentOne.Get((firstVal + 1) % childLen)
-		optionTwo, eP2 := parentTwo.Get((secondVal + 1) % childLen)
-
-		// Check for errors
-		if eP1 != nil || !self.isValidLoc(optionOne.Id, childLocations)  {
-			optionOne = self.nextValidLocation(childLocations, parentOne)
-			//pretty.Println("Pulling from backup for option one: ", optionOne.Id)
-		}
-
-		if eP2 != nil || !self.isValidLoc(optionTwo.Id, childLocations){
-			optionTwo = self.nextValidLocation(childLocations, parentTwo)
-			//pretty.Println("Pulling from backup for option two: ", optionTwo.Id)
-		}
-
-		// Pick the shorter option
-		distOne := parentOne.Matrix.GetDistance(childLocations[childLen - 1], optionOne)
-		distTwo := parentOne.Matrix.GetDistance(childLocations[childLen - 1], optionTwo)
-
-		//pretty.Println("Distances: ", distOne, " vs ", distTwo)
-
-		if count == 5 {
-			fmt.Println("aaaaaaaaaaaaaaaa")
-			pretty.Println(optionOne)
-			pretty.Println(optionTwo)
-			fmt.Println("aaaaaaaaaaaaaaaa")
-		}
-
-		// Add the best location
-		if distOne < distTwo {
-			//pretty.Println("Chose 1")
-			childLocations = append(childLocations, optionOne)
+		// Get the first candidate location
+		if parentOne.IndexOf(childLocations[len(childLocations) - 1].Id) > -1 {
+			// Get the value
+			canOne, _ = parentOne.Get((parentOne.IndexOf(childLocations[len(childLocations) - 1].Id) + 1) % 7)
 		} else {
-			//pretty.Println("Chose 2")
-			childLocations = append(childLocations, optionTwo)
+			return &Chromosome{}, errors.New("There was a problem indexing parent 1")
 		}
+
+		// Get the second candidate
+		if parentTwo.IndexOf(childLocations[len(childLocations) - 1].Id) > -1 {
+			// Get the value
+			canTwo, _ = parentTwo.Get((parentTwo.IndexOf(childLocations[len(childLocations) - 1].Id) + 1) % 7)
+		} else {
+			return &Chromosome{}, errors.New("There was a problem indexing parent 2")
+		}
+
+		// Check if each candidate is valid
+		if !self.isValidId(canOne.Id, childLocations) {
+			// pick a new one
+			newId, err := self.nextValidId(childLocations, parentOne.Length())
+
+			// check for an error
+			if err != nil {
+				return parentOne, err
+			}
+
+			// Assign the new location
+			canOne, err = parentOne.Get(parentOne.IndexOf(newId))
+
+			// Check for errors
+			if err != nil {
+				return parentOne, err
+			}
+		}
+
+		if !self.isValidId(canTwo.Id, childLocations) {
+			// pick a new one
+			newId, err := self.nextValidId(childLocations, parentOne.Length())
+
+			// check for an error
+			if err != nil {
+				return parentTwo, err
+			}
+
+			// Assign the new location
+			canTwo, err = parentTwo.Get(parentTwo.IndexOf(newId))
+
+			// Check for errors
+			if err != nil {
+				return parentTwo, err
+			}
+		}
+
+		// Append the choice with the smallest distance
+		prevLoc := childLocations[len(childLocations) - 1]
+
+		if parentOne.Matrix.GetDistance(prevLoc, canOne) < parentOne.Matrix.GetDistance(prevLoc, canTwo) {
+			childLocations = append(childLocations, canOne)
+		} else {
+			childLocations = append(childLocations, canTwo)
+		}
+
 	}
 
-	// Construct the chromosome
-	childChromo := NewChromosome(childLocations, parentOne.Matrix)
+	// Create the child chromosome
+	child := &Chromosome{
+		Locations: childLocations,
+		Matrix: parentOne.Matrix,
+	}
 
-	return childChromo, nil
+	pretty.Println(child)
+
+	return parentOne, nil
 }
 
-// Checks if a given location id is valid for a set of locations
-func (self *Population) isValidLoc(locId int, locations []Location) bool {
+func (self *Population) nextValidId(locations []Location, size int) (int, error) {
+	for i := 2; i < size; i++ {
+		if self.isValidId(i, locations) {
+			return i, nil
+		}
+	}
+
+	return -1, errors.New("Could not find a valid ID in the set 2..n")
+}
+
+func (self *Population) isValidId(id int, locations []Location) bool {
+	// Loop through each item in the locations slice
 	for _, val := range locations {
-		if val.Id == locId {
+		if val.Id == id {
 			return false
 		}
 	}
 
+	// The location was not included yet
 	return true
 }
 
-//TODO fix this method. It may just be that this method is not getting called when it supposed to
-// (i.e. one of the parents really do have a valid location)
-// Returns the next valid location in the set 2..n in the case
-// that neither parent had a next valid location
-func (self *Population) nextValidLocation(locations []Location, parent *Chromosome) Location {
-	fmt.Println("Looking in")
-	pretty.Println(locations)
-	pretty.Println(parent)
 
-	// For each number in the set 2..n
-	for locId := 2; locId <= parent.Length(); locId++ {
-		valid := true
 
-		// Check if the locations already has this item
-		for _, val := range locations {
-			if locId == val.Id {
-				valid = false
-				break
-			}
-		}
 
-		if valid && parent.IndexOf(locId) >= 0 && parent.IndexOf(locId) < parent.Length() {
-			retVal, _ := parent.Get(parent.IndexOf(locId))
-			return retVal
-		} else {
-			fmt.Println("Error: error in nextvalidlocation ", locId, valid)
-		}
-	}
 
-	// There was an error
-	return Location{Id:777}
-}
+
 
