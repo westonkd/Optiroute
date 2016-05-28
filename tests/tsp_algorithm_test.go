@@ -10,7 +10,7 @@ import (
 	"github.com/astaxie/beego"
 	. "github.com/smartystreets/goconvey/convey"
 	"math/rand"
-	"time"
+	"github.com/kr/pretty"
 )
 
 func init() {
@@ -21,65 +21,27 @@ func init() {
 
 func TestTSA(t *testing.T) {
 	Convey("Should produce a new population", t, func(){
-		rand.Seed(time.Now().Unix())
+		locations := []geneticTSP.Location{}
 
-		loc1 := geneticTSP.Location{
-			Id:   1,
-			Lat:  float32(rand.Intn(400)),
-			Long: float32(rand.Intn(400)),
-		}
+		for i := 0; i < 50; i++ {
+			location := geneticTSP.Location{
+				Id:   i + 1,
+				Lat:  float32(rand.Intn(390)),
+				Long: float32(rand.Intn(390)),
+			}
 
-		loc2 := geneticTSP.Location{
-			Id:   2,
-			Lat:  float32(rand.Intn(400)),
-			Long: float32(rand.Intn(400)),
-		}
-
-		loc3 := geneticTSP.Location{
-			Id:   3,
-			Lat:  float32(rand.Intn(400)),
-			Long: float32(rand.Intn(400)),
-		}
-
-		loc4 := geneticTSP.Location{
-			Id:   4,
-			Lat:  float32(rand.Intn(400)),
-			Long: float32(rand.Intn(400)),
-		}
-
-		loc5 := geneticTSP.Location{
-			Id:   5,
-			Lat:  float32(rand.Intn(400)),
-			Long: float32(rand.Intn(400)),
-		}
-
-		loc6 := geneticTSP.Location{
-			Id:   6,
-			Lat:  float32(rand.Intn(400)),
-			Long: float32(rand.Intn(400)),
-		}
-
-		loc7 := geneticTSP.Location{
-			Id:   7,
-			Lat:  float32(rand.Intn(400)),
-			Long: float32(rand.Intn(400)),
-		}
-
-		locations := []geneticTSP.Location{
-			loc1,
-			loc2,
-			loc3,
-			loc4,
-			loc5,
-			loc6,
-			loc7,
+			locations = append(locations, location)
 		}
 
 		ga, err := geneticTSP.NewTSPAlgorithm(locations,false,true, 50)
 
-		for i := 0; i < 5; i++ {
+		pretty.Println("Begin: ", ga.Pop.GetFittest().Distance())
+
+		for i := 0; i < 100; i++ {
 			ga.Evolve()
 		}
+
+		pretty.Println("End: ", ga.Pop.GetFittest().Distance())
 
 		So(err, ShouldBeNil)
 	})

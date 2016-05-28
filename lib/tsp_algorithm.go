@@ -4,7 +4,6 @@ import (
 )
 import (
 	"math/rand"
-	"fmt"
 	"github.com/kr/pretty"
 )
 
@@ -61,16 +60,23 @@ func (self *TSPAlgorithm) Evolve() {
 		offset++
 	}
 
-
-
 	// Crossover
 	for i := offset; i < self.PopSize; i++ {
 		// Select parent chromosomes
 		parent1 := self.Pop.TournamentSelect(5)
-		parent2 := self.Pop.TournamentSelect(5)
+		parent2 := self.Pop.TournamentSelect(5, parent1.Distance())
+
+		//if parent1.Distance() == parent2.Distance() {
+		//	pretty.Println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+		//	pretty.Println(parent1.Locations, parent1.Id)
+		//	pretty.Println(parent2.Locations, parent2.Id)
+		//	return
+		//}
 
 		// Do the crossover and add to the new generation
-		child, error := self.Pop.Crossover(parent1, parent2)
+		child, error := self.Pop.SimpleCrossover(parent1, parent2)
+
+		//pretty.Println("parent 1: ", parent1.Distance(), " ", " p2: ", parent2.Distance(), " ", " child: ", child.Distance(), "Min: ", self.Pop.GetFittest().Distance())
 
 		if error != nil {
 			pretty.Println("PANICCCC!")
@@ -80,26 +86,28 @@ func (self *TSPAlgorithm) Evolve() {
 		newChromosomes = append(newChromosomes, *child)
 	}
 
-
 	// Initialize a new population
 	nextGen := &Population{
 		Chromosomes: newChromosomes,
+		IDCounter: self.Pop.IDCounter,
+		MutThreshold: self.Pop.MutThreshold,
 	}
 
 	// Mutation
 	nextGen.Mutate()
 
+	//fmt.Println("Distance: ", nextGen.GetFittest().Distance(), " ", self.Pop.GetFittest().Distance())
+
 	// Assign the next population
 	self.Pop.Chromosomes = make([]Chromosome, len(nextGen.Chromosomes))
 	copy(self.Pop.Chromosomes, nextGen.Chromosomes)
 
-
-	fmt.Println("Distance: ", self.Pop.GetFittest().Distance())
+	//pretty.Println(self.Pop.GetFittest().Distance())
 }
 
 func (self *TSPAlgorithm) RandomPop() *Population {
 	p := Population{
-		MutThreshold: 0.015,
+		MutThreshold: .5,
 	}
 
 	p.Chromosomes = make([]Chromosome, 0)
@@ -123,6 +131,7 @@ func (self *TSPAlgorithm) RandomPop() *Population {
 		}
 	}
 
+	p.IDCounter = self.PopSize + 1
 
 	return &p
 }

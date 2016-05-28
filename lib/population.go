@@ -14,6 +14,7 @@ type Population struct {
 	MutThreshold   float32        // Threshold for mutation
 	CrossThreshold float32        // Threshold for crossover
 	Matrix         *FitnessMatrix // Matrix of distances
+	IDCounter int
 }
 
 // SetMatrix sets the cost matrix for the entire population
@@ -56,34 +57,53 @@ func (self *Population) GetFittest() *Chromosome {
 	return &fittest
 }
 
+func (self *Population) IndexOf(id int) int {
+	for i, val := range self.Chromosomes {
+		if val.Id == id {
+			return i
+		}
+	}
+
+	return -1
+}
+
 // TournamentSelect
-func (self *Population) TournamentSelect(tournamentSize int) *Chromosome {
+func (self *Population) TournamentSelect(tournamentSize int, prevChosen_opt ...int) *Chromosome {
 
-	// Make a new population of size tournamentSize
-	tournamentPop := Population{}
+	// Set the dault value if non was specified
+	prevChosen := -999
 
-	// Randomly add chromosomes to the new population
+	if len(prevChosen_opt) > 0 {
+		prevChosen = prevChosen_opt[0]
+	}
+
+	// Make an empty list of chromosomes
+	chromosomes := make([]Chromosome, 0)
+
 	for i := 0; i < tournamentSize; i++ {
-		randInt := rand.Intn(self.Size())
-		randomChromo, error := self.Get(randInt)
+		randomIndex := rand.Intn(len(self.Chromosomes) - 1)
 
-		// If there was an error just try again later
-		if error != nil {
+		randChromo, err := self.Get(randomIndex)
+
+		if err != nil {
+			pretty.Println(err)
+		}
+
+		if prevChosen == randChromo.Distance() {
 			i--
 			continue
 		}
 
-		if len(randomChromo.Locations) == 0 {
-			pretty.Println("Adding empty chromo to the list!")
-			//pretty.Println("Chose ", randInt, "From ", self.Chromosomes)
-		}
-
-		tournamentPop.Add(randomChromo)
-
+		chromosomes = append(chromosomes, *randChromo)
 	}
 
-	// Select the best chromosome
-	return tournamentPop.GetFittest()
+	// create the tournament population
+	tournPop := Population{
+		Chromosomes: chromosomes,
+		Matrix: self.Matrix,
+	}
+
+	return tournPop.GetFittest()
 }
 
 // Mutate iterates over all chromosomes and performs a random swap of locations
@@ -105,6 +125,51 @@ func (self *Population) Mutate() {
 		}
 	}
 
+}
+
+func (self *Population) SimpleCrossover(parentOne, parentTwo *Chromosome) (*Chromosome, error) {
+	startPos := rand.Intn(parentOne.Length() - 1)
+	endPos := rand.Intn(parentOne.Length() - 1)
+
+	// Make the child locations list
+	childLocations := make([]Location, parentOne.Length())
+
+	if startPos > endPos {
+		//Swap
+		temp := endPos
+		endPos = startPos
+		startPos = temp
+	}
+
+	// Add the subset to the child
+	for i := startPos; i <= endPos; i++ {
+		copy := parentOne.Locations[i]
+		childLocations[i] = copy
+	}
+
+	childIndex := 0
+	// Add the missing values from parent 2
+	for _, val := range parentTwo.Locations {
+		for childLocations[childIndex].Id != 0 {
+			childIndex++
+		}
+
+		if self.isValidId(val.Id, childLocations) {
+			copy := val
+			childLocations[childIndex] = copy
+		}
+	}
+
+	// Create the resulting chromosome
+	child := &Chromosome{
+		Locations: childLocations,
+		Matrix: parentOne.Matrix,
+		Id: self.IDCounter,
+	}
+
+	self.IDCounter++
+
+	return child, nil
 }
 
 // Crossover
@@ -187,20 +252,22 @@ func (self *Population) Crossover(parentOne, parentTwo *Chromosome) (*Chromosome
 	child := &Chromosome{
 		Locations: childLocations,
 		Matrix: parentOne.Matrix,
+		Id: self.IDCounter,
 	}
 
-	pretty.Println(child)
+	self.IDCounter++
 
-	return parentOne, nil
+	return child, nil
 }
 
 func (self *Population) nextValidId(locations []Location, size int) (int, error) {
-	for i := 2; i < size; i++ {
+	for i := 2; i <= size; i++ {
 		if self.isValidId(i, locations) {
 			return i, nil
 		}
 	}
 
+	pretty.Println(locations)
 	return -1, errors.New("Could not find a valid ID in the set 2..n")
 }
 
