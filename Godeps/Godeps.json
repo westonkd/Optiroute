@@ -42,6 +42,31 @@
 			"ImportPath": "github.com/astaxie/beego/utils",
 			"Comment": "v1.6.1-5-g88c5dfa",
 			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+		},
+		{
+			"ImportPath": "github.com/kr/pretty",
+			"Comment": "go.weekly.2011-12-22-29-gadd1dbc",
+			"Rev": "add1dbc86daf0f983cd4a48ceb39deb95c729b67"
+		},
+		{
+			"ImportPath": "github.com/kr/text",
+			"Rev": "7cafcd837844e784b526369c9bce262804aebc60"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "2a35e686583654a1b89ca79c4ac78cb3d6529ca3"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context/ctxhttp",
+			"Rev": "2a35e686583654a1b89ca79c4ac78cb3d6529ca3"
+		},
+		{
+			"ImportPath": "googlemaps.github.io/maps",
+			"Rev": "3ea5feb3a3848bae291910e27464a6bd6587241b"
+		},
+		{
+			"ImportPath": "googlemaps.github.io/maps/internal",
+			"Rev": "3ea5feb3a3848bae291910e27464a6bd6587241b"
 		}
 	]
 }
