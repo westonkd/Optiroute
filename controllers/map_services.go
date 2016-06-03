@@ -4,7 +4,6 @@ import (
 	"github.com/astaxie/beego"
 	"encoding/json"
 	"fmt"
-	"github.com/kr/pretty"
 	"optiroute/lib"
 )
 
@@ -32,8 +31,6 @@ func (c *MapServicesController) Post() {
 			fmt.Println("Unable to unmarshall the JSON request", err1);
 		}
 	}
-
-	pretty.Println(locations)
 
 	// Create the array of location objects
 	routeLocations := []geneticTSP.Location{}
