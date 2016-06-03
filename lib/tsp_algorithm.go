@@ -30,7 +30,7 @@ func NewTSPAlgorithm(locations []Location, google bool, elitism bool, popSize in
 
 	// If we have a one for Google maps
 	if TA.Google {
-		err := TA.Matrix.LoadGoogleMapsMatrix("asdfasdfasdf", locations)
+		err := TA.Matrix.LoadGoogleMapsMatrix("AIzaSyDExb4usTvy3QNZSuEo-CvcHtcRAoI2-7U", locations)
 		if err != nil {
 			return &TA, err
 		}

@@ -1,2 +1,3 @@
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+<script src="/static/js/MapHelpers.js"></script>
+<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>

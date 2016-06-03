@@ -1,3 +1,42 @@
-nav .icon-bar {
-    background-color: #2196f3;
+.page-content{
+    height:100vh
+}
+
+.location-form {
+    padding: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+img#logo {
+    width: 150px;
+}
+
+#submit-locs-button {
+    margin-top: 5px;
+}
+
+.mdl-layout--fixed-drawer h6 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.mdl-list__item {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+#loc-list {
+    margin-top: -15px;
+}
+
+#loc-header {
+    margin-top: 20px;
+    color: #F44336;
+}
+
+#info-list * {
+    color: #ACACAC;
 }
