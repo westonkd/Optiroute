@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/static/js/MapHelpers.js" line="50" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe3d9301-4db1-430a-a0d0-427302229927" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/optiroute" afterPath="$PROJECT_DIR$/optiroute" />
-    </list>
+    <list default="true" id="fe3d9301-4db1-430a-a0d0-427302229927" name="Default" comment="" />
     <ignored path="optiroute.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
