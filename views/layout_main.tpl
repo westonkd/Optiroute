@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optiroute</title>
     {{ .HeadScripts }}
     {{ .HeadStyles }}
@@ -18,7 +19,7 @@
         <div class="location-form">
             <form action="#">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="loc-to-add" placeholder="Richmond, VA" />
+                    <input class="mdl-textfield__input" type="text" id="loc-to-add"  />
                     <label class="mdl-textfield__label" for="loc-to-add">Location</label>
                 </div>
             </form>
