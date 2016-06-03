@@ -1,10 +1,45 @@
 //Set of waypoints
-var waypoints = [
-        "Soda+Springs,Idaho",
-        "Sugar+City,Idaho"
-];
 
 var locations = [];
+
+function sendLocations() {
+    console.log("sending:");
+    console.log(locations)
+
+    $.ajax({
+      type: "POST",
+      url: "/route",
+      data: JSON.stringify(locations),
+      success: function(locations){
+        console.log(toType(locations));
+
+        locations = locations.route;
+
+        origin = locations[0];
+        destination = locations[0];
+        waypoints = locations.slice(1);
+
+        console.log("origin");
+        console.log(origin);
+
+        // Print the results
+        console.log("Final Route:");
+        console.log(locations);
+
+        // Set the map
+       document.getElementById("google-map").src = buildURL(origin, destination, waypoints);
+      },
+      fail: function(){
+        alert("There was an error processing your route, please try again.");
+      },
+      'processData': false,
+      'contentType': 'application/json',
+    });
+}
+
+var toType = function(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+}
 
 function addLocation() {
     var locString = $("#loc-to-add").val();
@@ -76,9 +111,6 @@ function buildURL(start, end, waypoints) {
 }
 
 $(document).ready(function(){
-    //Test
-    document.getElementById("google-map").src = buildURL("Montpelier,Idaho", "Rexburg,Idaho", waypoints);
-
     // So the enter key adds a location
     $("#loc-to-add").keyup(function(event){
         if(event.keyCode == 13){

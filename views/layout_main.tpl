@@ -28,7 +28,7 @@
                 +
             </button>
 
-            <button id="submit-locs-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent full-width">
+            <button id="submit-locs-button" onclick ="sendLocations()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent full-width">
                 Get Route
             </button>
 
