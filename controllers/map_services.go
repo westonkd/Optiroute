@@ -14,10 +14,13 @@ type MapServicesController struct {
 	beego.Controller
 }
 
+// mystruct used for unmarshalling the JSON from the post body
 type mystruct struct {
 	Route []string `json:"route"`
 }
 
+// Takes an array of locations from the Post body and returns an array of
+// an optimized route using those locations
 func (c *MapServicesController) Post() {
 
 	// Get the locations

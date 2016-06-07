@@ -1,10 +1,57 @@
-//Set of waypoints
+// A messy collection of UI helper functions
 
 var locations = [];
+
+function validateLocations() {
+    var validPattern = /^[0-9a-zA-Z,\s-+]+$/;
+
+    //Check for at least 4 locations
+    if (locations.length < 4) {
+        showToast("Please include at least 4 locations in the route.");
+        return false;
+    }
+
+    for (var i = 0; i < locations.length; i++) {
+        if(!validPattern.test(locations[i])) {
+            showToast('"' + locations[i] + '"' + " contains invalid characters.");
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function removeLocation(loc) {
+    loc = loc.replaceAll(" ", "+");
+
+    console.log("removing " + loc);
+
+    for (var i=locations.length-1; i>=0; i--) {
+        if (locations[i] === loc) {
+            locations.splice(i, 1);
+            break;
+        }
+    }
+}
+
+function showToast(msg) {
+    var notification = document.querySelector('.mdl-js-snackbar');
+    notification.MaterialSnackbar.showSnackbar(
+      {
+        message: msg,
+        timeout: 5000
+      }
+    );
+}
 
 function sendLocations() {
     console.log("sending:");
     console.log(locations)
+
+    // Check for errors
+    if (!validateLocations()) {
+        return;
+    }
 
     $.ajax({
       type: "POST",
@@ -30,7 +77,10 @@ function sendLocations() {
        document.getElementById("google-map").src = buildURL(origin, destination, waypoints);
       },
       fail: function(){
-        alert("There was an error processing your route, please try again.");
+        showToast("There was an error processing your route, please try again.");
+      },
+      error: function(){
+          showToast("There was an error processing your route, please try again.");
       },
       'processData': false,
       'contentType': 'application/json',
@@ -65,11 +115,17 @@ function addLocation() {
 
     // Set the proper classes
     li.setAttribute("class", "mdl-list__item");
+    li.setAttribute("id", locString + "li");
     span.setAttribute("class", "mdl-list__item-primary-content");
+
+    var icon = document.createElement("span");
+    icon.setAttribute("class","delete-icon");
+    icon.appendChild(document.createTextNode("✖"));
 
     // Append the elements
     span.appendChild(document.createTextNode(locString));
     li.appendChild(span);
+    li.appendChild(icon)
     ul.appendChild(li);
 
     // Remove the old value from the text box
@@ -77,7 +133,16 @@ function addLocation() {
 
     // Give focus to the text box
     $("#loc-to-add").focus();
+
+    $(".delete-icon").click(function(e){
+        $(this).parent().hide();
+
+        removeLocation($(this).parent().children().eq(0).text());
+
+        console.log(locations);
+    });
 }
+
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
@@ -113,6 +178,7 @@ function buildURL(start, end, waypoints) {
 $(document).ready(function(){
     // So the enter key adds a location
     $("#loc-to-add").keyup(function(event){
+        event.preventDefault();
         if(event.keyCode == 13){
             $("#add-loc-button").click();
         }

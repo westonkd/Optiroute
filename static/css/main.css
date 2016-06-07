@@ -37,6 +37,15 @@ img#logo {
     color: #F44336;
 }
 
-#info-list * {
+#instructions,.delete-icon,#info-list * {
     color: #ACACAC;
+    cursor: pointer;
+}
+
+.delete-icon {
+    transition: color .10s;
+}
+
+.delete-icon:hover {
+    color: black;
 }

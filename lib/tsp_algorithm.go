@@ -16,7 +16,7 @@ type TSPAlgorithm struct {
 	Matrix FitnessMatrix
 }
 
-// NewTSPAlgorithm initializes an algorithm
+// NewTSPAlgorithm initializes an algorithm handler
 func NewTSPAlgorithm(locations []Location, google bool, elitism bool, popSize int) (*TSPAlgorithm, error) {
 	TA := TSPAlgorithm{
 		Locations: locations,
@@ -47,6 +47,7 @@ func NewTSPAlgorithm(locations []Location, google bool, elitism bool, popSize in
 	return &TA, nil
 }
 
+// Evolve evolves the generation by crossover and then mutation. Mutate the population in place.
 func (self *TSPAlgorithm) Evolve() {
 	// New empty slice of Chromosomes
 	newChromosomes := make([]Chromosome, 0)
@@ -65,13 +66,6 @@ func (self *TSPAlgorithm) Evolve() {
 		// Select parent chromosomes
 		parent1 := self.Pop.TournamentSelect(5)
 		parent2 := self.Pop.TournamentSelect(5, parent1.Distance())
-
-		//if parent1.Distance() == parent2.Distance() {
-		//	pretty.Println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-		//	pretty.Println(parent1.Locations, parent1.Id)
-		//	pretty.Println(parent2.Locations, parent2.Id)
-		//	return
-		//}
 
 		// Do the crossover and add to the new generation
 		child, error := self.Pop.SimpleCrossover(parent1, parent2)
@@ -105,6 +99,7 @@ func (self *TSPAlgorithm) Evolve() {
 	//pretty.Println(self.Pop.GetFittest().Distance())
 }
 
+// RandomPop returns a random population of popSize
 func (self *TSPAlgorithm) RandomPop() *Population {
 	p := Population{
 		MutThreshold: .5,

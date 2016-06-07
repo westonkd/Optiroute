@@ -16,7 +16,13 @@
         <span class="mdl-layout-title">
             <img id="logo" src="/static/img/logo.png" alt="Optiroute"/>
         </span>
+
         <div class="location-form">
+
+            <div id="instructions">
+                Use the bellow text box to add locations to your trip.
+            </div>
+
             <form action="#">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="loc-to-add"  />
@@ -52,5 +58,6 @@
     </main>
 </div>
 
+    {{ .Footer }}
 </body>
 </html>
