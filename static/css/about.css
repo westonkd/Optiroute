@@ -1,0 +1,16 @@
+.mdl-layout__header.is-casting-shadow {
+    background-color: white !important;
+}
+
+#logo {
+    width: 160px;
+}
+
+.text-container {
+    color: white;
+    background: #F44336;
+}
+
+#graph-container {
+    height: 400px;
+}
