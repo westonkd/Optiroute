@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand"
+	"github.com/tools/godep/Godeps/_workspace/src/github.com/kr/pretty"
 )
 
 type AboutController struct {
@@ -45,6 +46,8 @@ func (c *AboutController) Post() {
 		}
 	}
 
+	pretty.Println(locations)
+
 	response := AboutResponse{}
 
 	ga, err := geneticTSP.NewTSPAlgorithm(locations,false,true, 50)
@@ -52,9 +55,11 @@ func (c *AboutController) Post() {
 	response.Initial = ga.Pop.Chromosomes[rand.Intn(ga.PopSize - 1)]
 	response.InitialDistance = response.Initial.Distance()
 
-	for i := 0; i < 500; i++ {
+	for i := 0; i < 750; i++ {
 		ga.Evolve()
 	}
+
+
 
 	response.Final = *ga.Pop.GetFittest()
 	response.FinalDistance = response.Final.Distance()

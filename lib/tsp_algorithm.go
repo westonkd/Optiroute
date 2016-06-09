@@ -70,10 +70,7 @@ func (self *TSPAlgorithm) Evolve() {
 		// Do the crossover and add to the new generation
 		child, error := self.Pop.SimpleCrossover(parent1, parent2)
 
-		//pretty.Println("parent 1: ", parent1.Distance(), " ", " p2: ", parent2.Distance(), " ", " child: ", child.Distance(), "Min: ", self.Pop.GetFittest().Distance())
-
 		if error != nil {
-			pretty.Println("PANICCCC!")
 			pretty.Println(error)
 		}
 
@@ -102,7 +99,7 @@ func (self *TSPAlgorithm) Evolve() {
 // RandomPop returns a random population of popSize
 func (self *TSPAlgorithm) RandomPop() *Population {
 	p := Population{
-		MutThreshold: 0.45,
+		MutThreshold: 0.2,
 	}
 
 	p.Chromosomes = make([]Chromosome, 0)

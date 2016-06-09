@@ -3,7 +3,6 @@ package geneticTSP
 import (
 	"errors"
 	"math/rand"
-	"time"
 	"github.com/kr/pretty"
 )
 
@@ -112,7 +111,7 @@ func (self *Population) TournamentSelect(tournamentSize int, prevChosen_opt ...i
 // noticeable for larger chromosomes.
 func (self *Population) Mutate() {
 	// Seed the random number generator
-	rand.Seed(time.Now().Unix())
+	//rand.Seed(time.Now().Unix())
 
 	// Loop through each chromosome
 	for i := range self.Chromosomes {

@@ -8,7 +8,6 @@ $(document).ready(function() {
     })
 
     $('#optimize-points').click(function() {
-        console.log(s.graph.edges())
         for (var i = 1; i < response.Initial.Locations.length; i++) {
             s.graph.dropEdge('e' + i);
         }
@@ -25,14 +24,17 @@ $(document).ready(function() {
             }
         }
 
+        console.log(response.Final.Locations);
+
         // add the final edge
         try {
             s.graph.addEdge({
                 id: "eFinal",
-                source: 'n0',
-                target: 'n49',
+                source: response.Final.Locations[0].Name,
+                target: response.Final.Locations[19].Name,
             });
         } catch(e){
+            console.log("Error adding final edge.");
             // do nothing
         }
         s.refresh();
@@ -67,13 +69,13 @@ $(document).ready(function() {
         for (var i = 0; i < 20; i++) {
             var randX = getRandomInt(0, 1600);
             var randY = getRandomInt(0, 780);
-            var locID = 'n' + i;
+            var locID = 'n' + i.toString();
 
             var location = {
                 Name: locID,
                 Long: randX,
                 Lat: randY,
-                Id: i
+                Id: i + 1
             }
 
             // Add the location
