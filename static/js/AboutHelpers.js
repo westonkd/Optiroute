@@ -64,7 +64,7 @@ $(document).ready(function() {
 
         showToast("Generating random route, please wait.");
 
-        for (var i = 0; i < 50; i++) {
+        for (var i = 0; i < 20; i++) {
             var randX = getRandomInt(0, 1600);
             var randY = getRandomInt(0, 780);
             var locID = 'n' + i;
