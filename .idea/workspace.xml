@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe3d9301-4db1-430a-a0d0-427302229927" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/optiroute" afterPath="$PROJECT_DIR$/optiroute" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/Shared/header.tpl" afterPath="$PROJECT_DIR$/views/Shared/header.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_about.tpl" afterPath="$PROJECT_DIR$/views/layout_about.tpl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/about.go" afterPath="$PROJECT_DIR$/controllers/about.go" />
     </list>
     <ignored path="optiroute.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,10 +36,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout_main.tpl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="layout_main.tpl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6666667">
+            <state vertical-scroll-proportion="-4.627451">
               <caret line="46" column="53" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="53" />
               <folding />
             </state>
@@ -68,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="about.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="about.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/about.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.962963">
-              <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.84656084">
+              <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
               <folding>
                 <element signature="e#21#113#0" expanded="true" />
               </folding>
@@ -145,9 +143,9 @@
         <option value="$PROJECT_DIR$/static/css/about.css" />
         <option value="$PROJECT_DIR$/lib/tsp_algorithm.go" />
         <option value="$PROJECT_DIR$/static/js/AboutHelpers.js" />
-        <option value="$PROJECT_DIR$/controllers/about.go" />
         <option value="$PROJECT_DIR$/views/Shared/header.tpl" />
         <option value="$PROJECT_DIR$/views/layout_about.tpl" />
+        <option value="$PROJECT_DIR$/controllers/about.go" />
       </list>
     </option>
   </component>
@@ -1004,14 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/AboutHelpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.592592">
-          <caret line="113" column="103" selection-start-line="113" selection-start-column="103" selection-end-line="113" selection-end-column="103" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tsp_algorithm.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1020,13 +1010,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/about.go">
+    <entry file="file://$PROJECT_DIR$/static/js/AboutHelpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.962963">
-          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
-          <folding>
-            <element signature="e#21#113#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-15.592592">
+          <caret line="113" column="103" selection-start-line="113" selection-start-column="103" selection-end-line="113" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.627451">
+          <caret line="46" column="53" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,11 +1042,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
+    <entry file="file://$PROJECT_DIR$/controllers/about.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667">
-          <caret line="46" column="53" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="53" />
-          <folding />
+        <state vertical-scroll-proportion="0.84656084">
+          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+          <folding>
+            <element signature="e#21#113#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
