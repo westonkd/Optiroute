@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand"
-	"github.com/tools/godep/Godeps/_workspace/src/github.com/kr/pretty"
 )
 
 type AboutController struct {
@@ -45,8 +44,6 @@ func (c *AboutController) Post() {
 			fmt.Println("Unable to unmarshall the JSON request", err1);
 		}
 	}
-
-	pretty.Println(locations)
 
 	response := AboutResponse{}
 
