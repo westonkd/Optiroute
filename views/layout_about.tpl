@@ -14,7 +14,9 @@
         <div class="mdl-layout__header-row">
             <!-- Title -->
             <span class="mdl-layout-title">
+                 <a class="mdl-navigation__link" href="/">
                 <img id="logo" src="/static/img/logo.png" alt="Optiroute"/>
+                </a>
             </span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
