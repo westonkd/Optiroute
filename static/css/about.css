@@ -14,3 +14,12 @@
 #graph-container {
     height: 400px;
 }
+
+#loading-container {
+    display: none;
+    margin-top: 15px;
+}
+
+button {
+    margin-bottom: 10px !important;
+}

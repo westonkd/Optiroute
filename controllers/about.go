@@ -5,7 +5,6 @@ import (
 	"optiroute/lib"
 	"encoding/json"
 	"fmt"
-	"github.com/tools/godep/Godeps/_workspace/src/github.com/kr/pretty"
 	"math/rand"
 )
 
@@ -46,7 +45,6 @@ func (c *AboutController) Post() {
 		}
 	}
 
-	pretty.Println(locations)
 	response := AboutResponse{}
 
 	ga, err := geneticTSP.NewTSPAlgorithm(locations,false,true, 50)
@@ -54,14 +52,14 @@ func (c *AboutController) Post() {
 	response.Initial = ga.Pop.Chromosomes[rand.Intn(ga.PopSize - 1)]
 	response.InitialDistance = response.Initial.Distance()
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 700; i++ {
 		ga.Evolve()
 	}
 
 	response.Final = *ga.Pop.GetFittest()
 	response.FinalDistance = response.Final.Distance()
 
-	fmt.Println(response.Initial.Length(), ", ", response.Initial.Length())
+	fmt.Println(response.Initial.Length(), ", ", response.Final.Length())
 
 	c.Data["json"] = response
 	c.ServeJSON()

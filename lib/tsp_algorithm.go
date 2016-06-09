@@ -102,7 +102,7 @@ func (self *TSPAlgorithm) Evolve() {
 // RandomPop returns a random population of popSize
 func (self *TSPAlgorithm) RandomPop() *Population {
 	p := Population{
-		MutThreshold: .5,
+		MutThreshold: 0.45,
 	}
 
 	p.Chromosomes = make([]Chromosome, 0)
