@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe3d9301-4db1-430a-a0d0-427302229927" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/optiroute" afterPath="$PROJECT_DIR$/optiroute" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/about.go" afterPath="$PROJECT_DIR$/controllers/about.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/chromosome.go" afterPath="$PROJECT_DIR$/lib/chromosome.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/population.go" afterPath="$PROJECT_DIR$/lib/population.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tsp_algorithm.go" afterPath="$PROJECT_DIR$/lib/tsp_algorithm.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/population_test.go" afterPath="$PROJECT_DIR$/tests/population_test.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/tsp_algorithm_test.go" afterPath="$PROJECT_DIR$/tests/tsp_algorithm_test.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_main.tpl" afterPath="$PROJECT_DIR$/views/layout_main.tpl" />
     </list>
     <ignored path="optiroute.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +27,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AboutHelpers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AboutHelpers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/AboutHelpers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33277026">
+            <state vertical-scroll-proportion="-7.296296">
               <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout_main.tpl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3524804">
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -128,7 +132,6 @@
         <option value="$PROJECT_DIR$/views/index.tpl" />
         <option value="$PROJECT_DIR$/controllers/map_services.go" />
         <option value="$PROJECT_DIR$/conf/app.conf" />
-        <option value="$PROJECT_DIR$/views/layout_main.tpl" />
         <option value="$PROJECT_DIR$/static/css/main.css" />
         <option value="$PROJECT_DIR$/static/js/MapHelpers.js" />
         <option value="$PROJECT_DIR$/routers/router.go" />
@@ -145,6 +148,7 @@
         <option value="$PROJECT_DIR$/controllers/about.go" />
         <option value="$PROJECT_DIR$/lib/tsp_algorithm.go" />
         <option value="$PROJECT_DIR$/static/js/AboutHelpers.js" />
+        <option value="$PROJECT_DIR$/views/layout_main.tpl" />
       </list>
     </option>
   </component>
@@ -619,7 +623,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23344104" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32766616" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1003,14 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="53" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/tsp_algorithm_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0726979">
@@ -1065,8 +1061,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/AboutHelpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33277026">
+        <state vertical-scroll-proportion="-7.296296">
           <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3524804">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
           <folding />
         </state>
       </provider>

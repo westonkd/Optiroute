@@ -23,12 +23,12 @@
                 Use the bellow text box to add locations to your trip.
             </div>
 
-            <form action="#">
+            <div action="#">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="loc-to-add"  />
                     <label class="mdl-textfield__label" for="loc-to-add">Location</label>
                 </div>
-            </form>
+            </div>
 
             <button id="add-loc-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored full-width"
                 onclick="addLocation()">
