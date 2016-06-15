@@ -52,11 +52,10 @@ func (c *AboutController) Post() {
 	response.Initial = ga.Pop.Chromosomes[rand.Intn(ga.PopSize - 1)]
 	response.InitialDistance = response.Initial.Distance()
 
-	for i := 0; i < 750; i++ {
+	for i := 0; i < 2000; i++ {
 		ga.Evolve()
+		fmt.Println(ga.Pop.GetFittest().Distance())
 	}
-
-
 
 	response.Final = *ga.Pop.GetFittest()
 	response.FinalDistance = response.Final.Distance()

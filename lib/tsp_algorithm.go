@@ -85,7 +85,7 @@ func (self *TSPAlgorithm) Evolve() {
 	}
 
 	// Mutation
-	nextGen.Mutate()
+	nextGen.RSMutate()
 
 	//fmt.Println("Distance: ", nextGen.GetFittest().Distance(), " ", self.Pop.GetFittest().Distance())
 

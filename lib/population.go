@@ -110,9 +110,6 @@ func (self *Population) TournamentSelect(tournamentSize int, prevChosen_opt ...i
 // possibility of choosing the two swap values as the same number. This is less
 // noticeable for larger chromosomes.
 func (self *Population) Mutate() {
-	// Seed the random number generator
-	//rand.Seed(time.Now().Unix())
-
 	// Loop through each chromosome
 	for i := range self.Chromosomes {
 		// Generate a random number between 0 and 1
@@ -124,6 +121,19 @@ func (self *Population) Mutate() {
 		}
 	}
 
+}
+
+func (self *Population) RSMutate() {
+	// Loop through each chromosome
+	for i := range self.Chromosomes {
+		// Generate a random number between 0 and 1
+		mutVal := rand.Float32()
+
+		// Mutate if the random number is bellow threshold
+		if mutVal < self.MutThreshold {
+			self.Chromosomes[i].RandInvert()
+		}
+	}
 }
 
 func (self *Population) SimpleCrossover(parentOne, parentTwo *Chromosome) (*Chromosome, error) {

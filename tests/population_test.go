@@ -39,10 +39,45 @@ func getPopulation() geneticTSP.Population {
 		Id:   2,
 	}
 
+	loc4 := geneticTSP.Location{
+		Long: 45.0,
+		Lat:  45,
+		Id:   3,
+	}
+
+	loc5 := geneticTSP.Location{
+		Long: 55.0,
+		Lat:  45,
+		Id:   4,
+	}
+
+	loc6 := geneticTSP.Location{
+		Long: 455.0,
+		Lat:  5,
+		Id:   5,
+	}
+
+	loc7 := geneticTSP.Location{
+		Long: 4.0,
+		Lat:  45,
+		Id:   6,
+	}
+
+	loc8 := geneticTSP.Location{
+		Long: 355.0,
+		Lat:  25,
+		Id:   7,
+	}
+
 	locations := []geneticTSP.Location{
 		loc,
 		loc2,
 		loc3,
+		loc4,
+		loc5,
+		loc6,
+		loc7,
+		loc8,
 	}
 
 	matrix := geneticTSP.NewFitnessMatrix()
@@ -122,6 +157,18 @@ func TestPopulation(t *testing.T) {
 		//Always mutate
 		popTwo.MutThreshold = 2
 		popTwo.Mutate()
+
+		pretty.Println(popOne, "\n==========================")
+		pretty.Println(popTwo)
+	})
+
+	Convey("RSM mutation should work", t, func() {
+		popOne := getPopulation()
+		popTwo := getPopulation()
+
+		//Always mutate
+		popTwo.MutThreshold = 2
+		popTwo.RSMutate()
 
 		pretty.Println(popOne, "\n==========================")
 		pretty.Println(popTwo)

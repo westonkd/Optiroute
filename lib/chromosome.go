@@ -107,6 +107,29 @@ func (self *Chromosome) RandSwap() {
 	self.Swap(randOne, randTwo)
 }
 
+// Reverses a random sub-slice of the locations slice
+func (self *Chromosome) RandInvert() {
+	high := rand.Intn(self.Length() - 1)
+	low := rand.Intn(self.Length() - 1)
+
+	// Swap if needed
+	if low > high {
+		temp := low;
+		low = high;
+		high = temp;
+	}
+
+	// Make a copy
+	subChromo := self.Locations[low:high + 1]
+
+	// Reverse the subsection
+	for i := len(subChromo)/2-1; i >= 0; i-- {
+		opp := len(subChromo)-1-i
+		subChromo[i], subChromo[opp] = subChromo[opp], subChromo[i]
+	}
+
+}
+
 // Returns the index of the location with the specified ID
 func (self *Chromosome) IndexOf(id int) int {
 	for i, val := range self.Locations {
