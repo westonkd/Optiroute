@@ -53,7 +53,7 @@ $(document).ready(function() {
         var notification = document.querySelector('.mdl-js-snackbar');
         notification.MaterialSnackbar.showSnackbar({
             message: msg,
-            timeout: 5000
+            timeout: 2000
         });
     }
 
