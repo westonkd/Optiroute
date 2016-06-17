@@ -123,6 +123,8 @@ func (self *Population) Mutate() {
 
 }
 
+// RSMutate randomly reverses a sub slice in the slice
+// of locations.
 func (self *Population) RSMutate() {
 	// Loop through each chromosome
 	for i := range self.Chromosomes {
@@ -136,6 +138,8 @@ func (self *Population) RSMutate() {
 	}
 }
 
+// Simple crossover picks a random subsection of each parent and combines them
+// without duplicating locations in the route.
 func (self *Population) SimpleCrossover(parentOne, parentTwo *Chromosome) (*Chromosome, error) {
 	startPos := rand.Intn(parentOne.Length() - 1)
 	endPos := rand.Intn(parentOne.Length() - 1)
@@ -181,7 +185,8 @@ func (self *Population) SimpleCrossover(parentOne, parentTwo *Chromosome) (*Chro
 	return child, nil
 }
 
-// Crossover
+// Implementation of SCX crossover. This is not the optimal crossover operator for the
+// traveling salesman problem.
 func (self *Population) Crossover(parentOne, parentTwo *Chromosome) (*Chromosome, error) {
 	// Locations for the child
 	childLocations := make([]Location, 0)
@@ -269,6 +274,8 @@ func (self *Population) Crossover(parentOne, parentTwo *Chromosome) (*Chromosome
 	return child, nil
 }
 
+// Helper function for SCX Crossover operator. Gets the next valid id in the case
+// the normal flow does not find one.
 func (self *Population) nextValidId(locations []Location, size int) (int, error) {
 	for i := 2; i <= size; i++ {
 		if self.isValidId(i, locations) {
@@ -280,6 +287,8 @@ func (self *Population) nextValidId(locations []Location, size int) (int, error)
 	return -1, errors.New("Could not find a valid ID in the set 2..n")
 }
 
+// isValidId is a helper function for the SCX Crossover operator. It checks
+// to see if a 
 func (self *Population) isValidId(id int, locations []Location) bool {
 	// Loop through each item in the locations slice
 	for _, val := range locations {

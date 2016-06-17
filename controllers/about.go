@@ -61,8 +61,6 @@ func (c *AboutController) Post() {
 	response.Final = *ga.Pop.GetFittest()
 	response.FinalDistance = response.Final.Distance()
 
-	fmt.Println(response.Initial.Length(), ", ", response.Final.Length())
-
 	c.Data["json"] = response
 	c.ServeJSON()
 }
