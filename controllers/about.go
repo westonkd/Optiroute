@@ -47,15 +47,18 @@ func (c *AboutController) Post() {
 
 	response := AboutResponse{}
 
-	ga, err := geneticTSP.NewTSPAlgorithm(locations,false,true, 50)
+	// In general, n > 50 cities works best without elitism and a population of 200
+	ga, err := geneticTSP.NewTSPAlgorithm(locations,false,false, 300)
 
 	response.Initial = ga.Pop.Chromosomes[rand.Intn(ga.PopSize - 1)]
 	response.InitialDistance = response.Initial.Distance()
 
 	// 100 is sufficient for 20 locations
-	// Use at least 500 for 50
+	// 300, 400 for 24
+	// Use at least 600 for 50
 	for i := 0; i < 100; i++ {
 		ga.Evolve()
+		//fmt.Println(i, " ", ga.Pop.GetFittest().Distance())
 	}
 
 	response.Final = *ga.Pop.GetFittest()
@@ -64,3 +67,4 @@ func (c *AboutController) Post() {
 	c.Data["json"] = response
 	c.ServeJSON()
 }
+

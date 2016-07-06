@@ -62,7 +62,10 @@ func (self *TSPAlgorithm) Evolve() {
 	}
 
 	// Crossover
-	for i := offset; i < self.PopSize; i++ {
+	numCross := int(float32(self.PopSize) * self.Pop.CrossThreshold)
+	numLive := self.PopSize - numCross
+
+	for i := offset; i < numCross; i++ {
 		// Select parent chromosomes
 		parent1 := self.Pop.TournamentSelect(5)
 		parent2 := self.Pop.TournamentSelect(5, parent1.Distance())
@@ -77,6 +80,12 @@ func (self *TSPAlgorithm) Evolve() {
 		newChromosomes = append(newChromosomes, *child)
 	}
 
+	// Bring over survivors to the new generation
+	for i := 0; i < numLive; i++ {
+		newChromosome := self.Pop.TournamentSelect(15)
+		newChromosomes = append(newChromosomes, *newChromosome)
+	}
+
 	// Initialize a new population
 	nextGen := &Population{
 		Chromosomes: newChromosomes,
@@ -86,8 +95,6 @@ func (self *TSPAlgorithm) Evolve() {
 
 	// Mutation
 	nextGen.RSMutate()
-
-	//fmt.Println("Distance: ", nextGen.GetFittest().Distance(), " ", self.Pop.GetFittest().Distance())
 
 	// Assign the next population
 	self.Pop.Chromosomes = make([]Chromosome, len(nextGen.Chromosomes))
@@ -99,7 +106,8 @@ func (self *TSPAlgorithm) Evolve() {
 // RandomPop returns a random population of popSize
 func (self *TSPAlgorithm) RandomPop() *Population {
 	p := Population{
-		MutThreshold: 0.2,
+		MutThreshold: 0.5,
+		CrossThreshold: 0.95,
 	}
 
 	p.Chromosomes = make([]Chromosome, 0)

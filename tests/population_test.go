@@ -150,6 +150,13 @@ func TestPopulation(t *testing.T) {
 		pretty.Print(chromo)
 	})
 
+	Convey("Population should perform a roullette selection", t, func(){
+		pop := getPopulation()
+
+		chromo := pop.RouletteSelect()
+		pretty.Print(chromo.Id)
+	})
+
 	Convey("Population should have the ablility to mutate", t, func() {
 		popOne := getPopulation()
 		popTwo := getPopulation()

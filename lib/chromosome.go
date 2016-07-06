@@ -6,6 +6,7 @@ import (
 	"errors"
 	"math/rand"
 	"strconv"
+
 )
 
 // Chromosome represents a set of genes (locations).
@@ -111,6 +112,8 @@ func (self *Chromosome) RandSwap() {
 func (self *Chromosome) RandInvert() {
 	high := rand.Intn(self.Length() - 1)
 	low := rand.Intn(self.Length() - 1)
+
+
 
 	// Swap if needed
 	if low > high {

@@ -66,6 +66,49 @@ func (self *Population) IndexOf(id int) int {
 	return -1
 }
 
+
+// Roulette Select
+func (self *Population) RouletteSelect(prevChosen_opt ...int) *Chromosome {
+	prevChosen := -999
+
+	if len(prevChosen_opt) > 0 {
+		prevChosen = prevChosen_opt[0]
+	}
+
+	// Sum of weights
+	sum := float32(0.0)
+	weights := make([]float32, self.Size())
+
+	// TODO if already set, don't do this again
+	for _, val := range self.Chromosomes {
+		sum += val.Fitness()
+		weights = append(weights, val.Fitness())
+	}
+
+	// Pick a random value
+	randValue := rand.Float32() * sum
+	selectedWeight := float32(0.0)
+
+	for _, fitness := range weights {
+		randValue -= fitness
+		if randValue <= 0 {
+			selectedWeight = fitness
+		}
+	}
+
+	for _, val := range self.Chromosomes {
+		if val.Fitness() == selectedWeight {
+			if val.Id == prevChosen {
+				break
+			}
+
+			return &val
+		}
+	}
+
+	return self.TournamentSelect(10)
+}
+
 // TournamentSelect
 func (self *Population) TournamentSelect(tournamentSize int, prevChosen_opt ...int) *Chromosome {
 

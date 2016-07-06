@@ -18,8 +18,12 @@
 </div>
     <div class="mdl-cell mdl-cell--4">
         <p>
-            To see the algorithm in action click "Generate Points." This will run the algorithm on a random set of locations, show you the initial route, then allow you to see the optimized route.
+            Steps to see the algorithm in action:
         </p>
+        <ol>
+            <li>Click "Generate Points" to generate a random set of points and show one of the <em>initial</em> routes the algorithm will use.</li>
+            <li>Click "View Optimized Route" to show the final optimized route.</li>
+        </ol>
         <div>
             <button id="gen-points" class="mdl-button mdl-js-button mdl-button--raised">
                 Generate Points

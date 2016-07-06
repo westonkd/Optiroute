@@ -2,6 +2,7 @@
 $(document).ready(function() {
     var response;
     var locations = [];
+    var numPoints = 20;
 
     $('#gen-points').click(function() {
         setRandomPoints();
@@ -31,7 +32,7 @@ $(document).ready(function() {
             s.graph.addEdge({
                 id: "eFinal",
                 source: response.Final.Locations[0].Name,
-                target: response.Final.Locations[19].Name,
+                target: response.Final.Locations[numPoints - 1].Name,
             });
         } catch(e){
             console.log("Error adding final edge.");
@@ -66,7 +67,7 @@ $(document).ready(function() {
 
         showToast("Generating random route, please wait.");
 
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < numPoints; i++) {
             var randX = getRandomInt(0, 1600);
             var randY = getRandomInt(0, 780);
             var locID = 'n' + i.toString();
