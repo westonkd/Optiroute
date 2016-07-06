@@ -3,8 +3,6 @@
 package geneticTSP
 
 import (
-)
-import (
 	"math/rand"
 	"github.com/kr/pretty"
 )

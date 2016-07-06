@@ -6,18 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fe3d9301-4db1-430a-a0d0-427302229927" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/optiroute" afterPath="$PROJECT_DIR$/optiroute" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/about.go" afterPath="$PROJECT_DIR$/controllers/about.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/default.go" afterPath="$PROJECT_DIR$/controllers/default.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/chromosome.go" afterPath="$PROJECT_DIR$/lib/chromosome.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fitness_matrix.go" afterPath="$PROJECT_DIR$/lib/fitness_matrix.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/location.go" afterPath="$PROJECT_DIR$/lib/location.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/population.go" afterPath="$PROJECT_DIR$/lib/population.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tsp_algorithm.go" afterPath="$PROJECT_DIR$/lib/tsp_algorithm.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/about.css" afterPath="$PROJECT_DIR$/static/css/about.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/tsp_algorithm_test.go" afterPath="$PROJECT_DIR$/tests/tsp_algorithm_test.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/about.tpl" afterPath="$PROJECT_DIR$/views/about.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_about.tpl" afterPath="$PROJECT_DIR$/views/layout_about.tpl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout_main.tpl" afterPath="$PROJECT_DIR$/views/layout_main.tpl" />
     </list>
     <ignored path="optiroute.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/lib/population.go">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="187" column="31" selection-start-line="187" selection-start-column="31" selection-end-line="187" selection-end-column="31" />
+              <caret line="195" column="22" selection-start-line="195" selection-start-column="22" selection-end-line="195" selection-end-column="22" />
               <folding>
                 <element signature="e#151#208#0" expanded="true" />
               </folding>
@@ -80,6 +71,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="tsp_algorithm.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/tsp_algorithm.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding>
+                <element signature="e#151#198#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="footer.tpl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/Shared/footer.tpl">
           <provider selected="true" editor-type-id="text-editor">
@@ -90,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout_main.tpl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="layout_main.tpl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6964587">
-              <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+            <state vertical-scroll-proportion="-19.083334">
+              <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -110,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="about.tpl" pinned="false" current-in-tab="false">
+      <file leaf-file-name="about.tpl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/about.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.625">
-              <caret line="35" column="244" selection-start-line="35" selection-start-column="244" selection-end-line="35" selection-end-column="244" />
+            <state vertical-scroll-proportion="0.34232715">
+              <caret line="19" column="125" selection-start-line="19" selection-start-column="125" selection-end-line="19" selection-end-column="125" />
               <folding />
             </state>
           </provider>
@@ -168,16 +171,16 @@
         <option value="$PROJECT_DIR$/tests/tsp_algorithm_test.go" />
         <option value="$PROJECT_DIR$/controllers/about.go" />
         <option value="$PROJECT_DIR$/controllers/default.go" />
-        <option value="$PROJECT_DIR$/lib/tsp_algorithm.go" />
         <option value="$PROJECT_DIR$/lib/chromosome.go" />
         <option value="$PROJECT_DIR$/lib/fitness_matrix.go" />
         <option value="$PROJECT_DIR$/lib/location.go" />
         <option value="$PROJECT_DIR$/lib/population.go" />
-        <option value="$PROJECT_DIR$/views/about.tpl" />
         <option value="$PROJECT_DIR$/static/css/about.css" />
         <option value="$PROJECT_DIR$/views/Shared/footer.tpl" />
         <option value="$PROJECT_DIR$/views/layout_about.tpl" />
         <option value="$PROJECT_DIR$/views/layout_main.tpl" />
+        <option value="$PROJECT_DIR$/lib/tsp_algorithm.go" />
+        <option value="$PROJECT_DIR$/views/about.tpl" />
       </list>
     </option>
   </component>
@@ -620,6 +623,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23344104" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32713178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -630,7 +634,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32713178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -682,7 +685,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lib/tsp_algorithm.go</url>
-          <line>4</line>
+          <line>3</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -945,6 +948,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.024232633">
           <caret line="153" column="38" selection-start-line="153" selection-start-column="38" selection-end-line="153" selection-end-column="38" />
+          <folding>
+            <element signature="e#14#223#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -990,16 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tsp_algorithm.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.024311183">
-          <caret line="1" column="62" selection-start-line="1" selection-start-column="62" selection-end-line="1" selection-end-column="62" />
-          <folding>
-            <element signature="e#151#209#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/chromosome.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.6186441">
@@ -1024,28 +1020,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/population.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="187" column="31" selection-start-line="187" selection-start-column="31" selection-end-line="187" selection-end-column="31" />
-          <folding>
-            <element signature="e#151#208#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/about.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/about.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.625">
-          <caret line="35" column="244" selection-start-line="35" selection-start-column="244" selection-end-line="35" selection-end-column="244" />
           <folding />
         </state>
       </provider>
@@ -1076,8 +1054,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layout_main.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6964587">
-          <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+        <state vertical-scroll-proportion="-19.083334">
+          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/population.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="195" column="22" selection-start-line="195" selection-start-column="22" selection-end-line="195" selection-end-column="22" />
+          <folding>
+            <element signature="e#151#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tsp_algorithm.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#151#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/about.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34232715">
+          <caret line="19" column="125" selection-start-line="19" selection-start-column="125" selection-end-line="19" selection-end-column="125" />
           <folding />
         </state>
       </provider>

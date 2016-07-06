@@ -17,7 +17,7 @@
         </h2>
         <p>
             Next we need to select some of the best routes from the initial population for “breeding”. There are many ways to accomplish this, but Optiroute uses a process called a
-            <a href="https://en.wikipedia.org/wiki/Tournament_selection">tournament select</a>.
+            <a href="https://en.wikipedia.org/wiki/Tournament_selection" style="color:#448aff;text-decoration:none!important;">tournament select</a>.
         </p>
         <h2>
             Crossover
@@ -35,7 +35,6 @@
         <p>
             By completing crossover and mutation, we now have an entirely new population of routes that is better than our initial population. Now we repeat the above steps on our new population until we find a route that is sufficiently short.
         </p>
-
     </div>
     <div class="mdl-cell mdl-cell--1-col">
     </div>

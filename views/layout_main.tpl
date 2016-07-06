@@ -57,7 +57,6 @@
         </div>
     </main>
 </div>
-
     {{ .Footer }}
 </body>
 </html>
