@@ -1,3 +1,5 @@
+//Package genetic TSP provides structures to approximate a solution
+//to the traveling salesman problem using a genetic algorithm.
 package geneticTSP
 
 import (
@@ -183,7 +185,7 @@ func (self *Population) RSMutate() {
 
 // Simple crossover picks a random subsection of each parent and combines them
 // without duplicating locations in the route.
-func (self *Population) SimpleCrossover(parentOne, parentTwo *Chromosome) (*Chromosome, error) {
+func (self *Population) OrderedCrossover(parentOne, parentTwo *Chromosome) (*Chromosome, error) {
 	startPos := rand.Intn(parentOne.Length() - 1)
 	endPos := rand.Intn(parentOne.Length() - 1)
 

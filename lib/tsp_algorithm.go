@@ -1,3 +1,5 @@
+//Package genetic TSP provides structures to approximate a solution
+//to the traveling salesman problem using a genetic algorithm.
 package geneticTSP
 
 import (
@@ -71,7 +73,7 @@ func (self *TSPAlgorithm) Evolve() {
 		parent2 := self.Pop.TournamentSelect(5, parent1.Distance())
 
 		// Do the crossover and add to the new generation
-		child, error := self.Pop.SimpleCrossover(parent1, parent2)
+		child, error := self.Pop.OrderedCrossover(parent1, parent2)
 
 		if error != nil {
 			pretty.Println(error)

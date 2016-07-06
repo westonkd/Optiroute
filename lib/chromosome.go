@@ -6,7 +6,6 @@ import (
 	"errors"
 	"math/rand"
 	"strconv"
-
 )
 
 // Chromosome represents a set of genes (locations).

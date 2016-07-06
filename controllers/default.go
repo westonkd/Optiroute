@@ -8,6 +8,7 @@ type MainController struct {
 	beego.Controller
 }
 
+// Get the page
 func (c *MainController) Get() {
 	//Layout Info
 	c.Layout = "layout_main.tpl"

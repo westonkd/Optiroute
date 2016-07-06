@@ -19,6 +19,7 @@ type AboutResponse struct {
 	FinalDistance int
 }
 
+// Display the about page
 func (c *AboutController) Get() {
 	//Layout Info
 	c.Layout = "layout_about.tpl"
@@ -32,6 +33,7 @@ func (c *AboutController) Get() {
 	c.TplName = "about.tpl"
 }
 
+// Optimize a random set of points from the POST body
 func (c *AboutController) Post() {
 	// Get the locations
 	req := c.Ctx.Request

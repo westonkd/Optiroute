@@ -1,3 +1,5 @@
+//Package genetic TSP provides structures to approximate a solution
+//to the traveling salesman problem using a genetic algorithm.
 package geneticTSP
 
 import (
@@ -54,7 +56,7 @@ func (self *FitnessMatrix) LoadPointMatrix(locations []Location) error {
 	return nil
 }
 
-// fillMatrix takes a string of locations and returns the mapping of sources
+// getMapping takes a string of locations and returns the mapping of sources
 // and destinations for the Google maps distance matrix
 func (self *FitnessMatrix) getMapping(locations []Location) ([]string, []string) {
 	var origins []string

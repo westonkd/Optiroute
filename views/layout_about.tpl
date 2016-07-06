@@ -31,9 +31,22 @@
         <div class="page-content">
             {{ .LayoutContent }}
         </div>
+        <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">Optiroute</div>
+            <div class="mdl-logo" style="color:inherit;font-weight:500">
+                Copyright © Weston Dransfield 2016
+            </div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="http://westonkd.github.io">Contact Weston</a></li>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </div>
+        </footer>
     </main>
 </div>
 {{ .Footer }}
+</footer>
 <script src="/static/js/AboutHelpers.js"></script>
 </body>
 </html>
